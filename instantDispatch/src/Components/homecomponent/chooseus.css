@@ -1,0 +1,35 @@
+*{
+    margin: 0%;
+    padding: 0%;
+
+}
+.choose-us{
+    padding: 80px;
+    background-color: rgb(250, 250, 250);
+    margin-bottom: 10px;
+}
+.head-choose{
+    padding-left: 20px;
+    border-left: 2px solid red;
+    
+}
+.par-choose{
+   
+   width: 70%;
+   word-spacing: 5px; /* Adjust the spacing value as needed */ 
+   padding-top: 1rem; /* Maintain existing padding */
+    padding-left: 1.75rem; /* Maintain existing padding */
+}
+.choose-img{
+   padding-right: 20px;
+}
+.bus-btn{
+    margin-left: 10px;
+    margin-top: 40px;
+    padding: 10px;
+    border-radius: 20px;
+    width: 130px;
+    font-size: 17px;
+    background-color: #F8AD42;
+    border: none;
+}

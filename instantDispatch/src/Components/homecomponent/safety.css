@@ -1,0 +1,24 @@
+*{
+    padding: 0%;
+    margin: 0;
+}
+.safety{
+    background-color: rgb(250, 250, 250);
+}
+.safe-img{
+    padding-top: 20%;
+    height: 400px;
+}
+.safety-text{
+    padding: 10%;
+}
+.safe-btn{
+    margin-left: 10px;
+    margin-top: 40px;
+    padding: 10px;
+    border-radius: 20px;
+    width: 130px;
+    font-size: 17px;
+    background-color: #F8AD42;
+    border: none;
+}

@@ -1,0 +1,61 @@
+.service-cards{
+    
+    margin-top: 6%;
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-bottom: 10%;
+    gap: 100px;
+  }
+.card-img1{
+    width: 300px;
+    height: 300px;
+    padding-left: 57px;
+   
+}
+.card-img2{
+    width: 300px;
+    height: 300px;
+    padding-left: 57px;
+}
+.card-img3{
+    width: 300px;
+    height: 300px;
+    padding-left: 57px;
+}
+.head{
+   padding-top: 20px;
+}
+.par{
+   padding-top: 20px;
+}
+.card1 {
+    padding-left: 10px;
+}
+.card1:hover { 
+     transform: scale(1.05); /* Enlarge the image slightly */ 
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add a box shadow */
+        border-radius: 2%;
+         transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+       
+}
+.card2{
+    padding-left: 10px;
+}
+.card2:hover { 
+    transform: scale(1.05); /* Enlarge the image slightly */ 
+    border-radius: 2%;
+       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add a box shadow */
+        transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+      
+}
+.card3{
+    padding-left: 10px;
+}
+.card3:hover { 
+    transform: scale(1.05); /* Enlarge the image slightly */ 
+    border-radius: 2%;
+       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add a box shadow */
+        transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+      
+}
+

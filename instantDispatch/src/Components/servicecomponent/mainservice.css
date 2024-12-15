@@ -1,0 +1,89 @@
+*{
+    margin: 0%;
+    padding: 0%;
+}
+.service-sec2{
+    background-color: rgb(250, 250, 250);
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+.service-header{
+    font-size: 50px;
+    
+}
+.service-text{
+    width: 50%;
+}
+.service-img{
+    padding-left: 220px;
+}
+.sec2-header{
+    margin-left: 20px;
+    padding-left: 5%;
+    border-left: 2px solid red;
+}
+.sec2-par{
+    padding-left: 12%;
+    padding-top: 6%;
+}
+.service-cards{
+    
+    margin-top: 6%;
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-bottom: 10%;
+    gap: 100px;
+  }
+.card-img1{
+    width: 300px;
+    height: 300px;
+    padding-left: 57px;
+   
+}
+.card-img2{
+    width: 300px;
+    height: 300px;
+    padding-left: 57px;
+}
+.card-img3{
+    width: 300px;
+    height: 300px;
+    padding-left: 57px;
+}
+.head{
+   padding-top: 20px;
+}
+.par{
+   padding-top: 20px;
+}
+.card1 {
+    padding-left: 10px;
+}
+.card1:hover { 
+     transform: scale(1.05); /* Enlarge the image slightly */ 
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add a box shadow */
+        border-radius: 2%;
+         transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+       
+}
+.card2{
+    padding-left: 10px;
+}
+.card2:hover { 
+    transform: scale(1.05); /* Enlarge the image slightly */ 
+    border-radius: 2%;
+       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add a box shadow */
+        transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+      
+}
+.card3{
+    padding-left: 10px;
+}
+.card3:hover { 
+    transform: scale(1.05); /* Enlarge the image slightly */ 
+    border-radius: 2%;
+       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add a box shadow */
+        transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+      
+}
+

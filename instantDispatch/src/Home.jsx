@@ -3,6 +3,8 @@ import Mainservice from "./Components/servicecomponent/mainservice";
 
 
 
+import Navbar from "./Components/homecomponent/Navbar"
+import Footer from "./Components/homecomponent/Footer";
 
 const Home = () => {
   return (
@@ -10,6 +12,7 @@ const Home = () => {
       <Navbar/>
       <Mainservice />
    
+      <Footer/>
     </div>
   )
 }

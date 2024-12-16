@@ -1,11 +1,12 @@
 
-// import Home from "./home";
+
+import Servicespage from "./Servicespage";
 
 export default function App() {
   return (
 
    <>
-      {/* <Home/> */}
+     <Servicespage/>
  
    </>
 

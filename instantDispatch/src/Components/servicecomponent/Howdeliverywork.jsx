@@ -1,4 +1,4 @@
-import React from 'react'
+
 import './howdeliverywork.css'
 import { SlBasket } from "react-icons/sl";
 

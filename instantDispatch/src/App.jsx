@@ -1,12 +1,12 @@
 
-import Home from "./home";
+// import Home from "./home";
 
 export default function App() {
   return (
 
    <>
-      <Home/>
-     
+      {/* <Home/> */}
+ 
    </>
 
    

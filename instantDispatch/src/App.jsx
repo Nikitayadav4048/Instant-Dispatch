@@ -1,11 +1,13 @@
 
-import Home from "./home";
+// import Home from "./Home";
+import Servicespage from "./Servicespage";
 
 export default function App() {
   return (
 
    <>
-      <Home/>
+      {/* <Home/> */}
+      <Servicespage />
      
    </>
 

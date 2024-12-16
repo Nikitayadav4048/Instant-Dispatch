@@ -1,0 +1,23 @@
+*{
+    padding: 0;
+    margin: 0%;
+}
+.try-us{
+    background-color: #F8F5F3;
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+.tryus{
+    height: 75%;
+    margin-left: 20%;
+}
+.safe-btn{
+    margin-left: 100px;
+    margin-top: 40px;
+    padding: 10px;
+    border-radius: 20px;
+    width: 130px;
+    font-size: 17px;
+    background-color: #F8AD42;
+    border: none;
+}

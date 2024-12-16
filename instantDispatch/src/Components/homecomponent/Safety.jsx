@@ -16,7 +16,7 @@ const Safety = () => {
                      contactless delivery options. We also offer comprehensive insurance coverage for peace of mind. Your trust and security are paramount to us,
                       and we are committed to providing a safe and reliable service for everyone.</p>
 
-                      <button className='safe-btn'>Know more</button>
+                      <button className='safe-btn font-bold'>Know more</button>
            </div>
        </div>
     </div>

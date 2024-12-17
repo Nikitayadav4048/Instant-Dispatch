@@ -1,14 +1,20 @@
 
+import Footer from './Components/homecomponent/footer';
 import Navbar from './Components/homecomponent/Navbar'
-import Howdeliverywork from './Components/servicecomponent/Howdeliverywork'
-import Cards from './Components/servicecomponent/Cards'
+import Fastservice from './Components/servicecomponent/Fastservice';
+import Mainservice from './Components/servicecomponent/Mainservice';
+import Tryus from './Components/servicecomponent/Tryus';
+
+
 
 const Servicespage = () => {
   return (
     <div>
         <Navbar/>
-        <Mainservice />
-      
+    <Mainservice/>
+    <Fastservice/>
+      <Tryus/>
+      <Footer/>
     </div>
   )
 }

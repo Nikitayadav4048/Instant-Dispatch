@@ -1,4 +1,4 @@
-import React from 'react'
+
 import './fastservice.css'
 import fast from '../../assets/fast.gif'
  const Fastservice = () => {

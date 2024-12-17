@@ -1,12 +1,14 @@
 
-import Home from "./home";
+import About from "./About";
+import Book from "./Book";
+
 
 export default function App() {
   return (
 
    <>
-      <Home/>
-     
+     <Book/>
+     <About/>
    </>
 
    

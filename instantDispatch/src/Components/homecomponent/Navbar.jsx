@@ -4,10 +4,9 @@ import { useState } from "react";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-
   return (
    
-      <nav className="main-div">
+    <nav className="main-div">
      
      
         <div className="container mx-auto flex flex-wrap  items-center  justify-between" >

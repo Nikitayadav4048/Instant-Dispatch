@@ -35,35 +35,38 @@ const Mainservice = () => {
          <div className="service-cards flex">
             {/* 1 */}
                <div className="card1">
-                     <div >
+                     <div className='pl-8'>
                            <img src= {card1} alt=""  className="card-img1"/>
                      </div>
                      <div className="card-par">
-                     <h1 className='text-4xl head text-center justify-center'>Swift Biker</h1>
-                     <p className='text-lg par pr-5 pl-5'>Quick and efficient city deliveries for small parcels and documents.
+                     <h1 className='text-2xl head'>Swift Biker</h1>
+                     <p className='text-sm  par'>Quick and efficient city deliveries for small parcels and documents.
                          Our bike couriers navigate traffic with ease for timely service.</p>
+                         <button className='service-btn font-bold'>Book </button>
                      </div>
                </div>
                {/* 2 */}
                <div className="card2">
-               <div >
+               <div className='pl-8'>
                <img src={card2} alt="" className="card-img2" /> 
                  </div>
                  <div className="card-par">
-                    <h1 className='text-4xl head text-center justify-center'>Motocycle Rider</h1>
-                        <p className='text-lg par pr-5 pl-5'>Eco-friendly and cost-effective for lightweight packages and short distances, 
+                    <h1 className='text-2xl head'>Motocycle Rider</h1>
+                        <p className='text-sm  par'>Eco-friendly and cost-effective for lightweight packages and short distances, 
                             combining speed and sustainability.</p>
+                            <button className='service-btn font-bold'>Book </button>
                         </div>
                </div>
                {/* 3 */}
                <div className="card3">
-               <div >
+               <div className='pl-8'>
                <img src={card3} alt="" className="card-img3" />
                  </div>
                  <div className="card-par ">
-                    <h1 className='text-4xl head text-center justify-center'>Pickup Driver</h1>
-                        <p className='text-lg par pr-5 pl-5' >Ideal for larger items and multiple parcels.
+                    <h1 className='text-2xl head'>Pickup Driver</h1>
+                        <p className='text-sm par' >Ideal for larger items and multiple parcels.
                              Our small trucks ensure secure and efficient transport for safe and timely deliveries.</p>
+                             <button className='service-btn font-bold'>Book </button>
                 </div>
                </div>
          </div>

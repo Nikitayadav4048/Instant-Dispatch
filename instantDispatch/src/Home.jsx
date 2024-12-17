@@ -1,18 +1,27 @@
 import Navbar from "./Components/homecomponent/Navbar";
+import Business from "./Components/homecomponent/Business";
+import Chooseus from "./Components/homecomponent/Chooseus";
+import Maincontainer from "./Components/homecomponent/Maincontainer";
 
 
+import Opitions from "./Components/homecomponent/Opitions";
+import Safety from "./Components/homecomponent/Safety";
+import Footer from "./Components/homecomponent/footer";
 
-
-import Footer from "./Components/homecomponent/Footer";
-import Mainservice from "./Components/servicecomponent/Mainservice";
 
 const Home = () => {
   return (
     <div>
-      <Navbar/>
-      <Mainservice/>
+      <Navbar/> 
+      <Maincontainer />
+      <Chooseus />
+       <Opitions />
+       <Safety />
+      <Business />
+      <Footer />
+
+      
    
-      <Footer/>
     </div>
   )
 }

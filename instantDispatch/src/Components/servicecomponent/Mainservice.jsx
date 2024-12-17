@@ -10,7 +10,7 @@ const Mainservice = () => {
     <div>
         {/* 1 */}
          <div className="services">
-            <div className="service-header m-32 text-center justify-center">
+            <div className="service-header my-14 md:my-44 lg:my-44 text-center justify-center">
                 <h1> 
                     Services
                 </h1>
@@ -18,7 +18,7 @@ const Mainservice = () => {
             </div>
          </div>
 {/* 2 */}
-         <div className="service-sec2 flex">
+         <div className="service-sec2 flex flex-wrap">
             <div className="service-text">
                 <h1 className='text-4xl sec2-header'>We Provide The Most Reliable Delivery Service</h1>
                 <p className='text-lg sec2-par'>At Instant Dispatch, our commitment to reliability sets us apart. 
@@ -32,10 +32,10 @@ const Mainservice = () => {
             </div>
          </div>
 {/* 3 */}
-         <div className="service-cards flex">
+         <div className="service-cards flex md:flex-wrap lg:flex-nowrap flex-wrap ">
             {/* 1 */}
                <div className="card1">
-                     <div className='pl-8'>
+                     <div className='pl-1 md:pl-8 lg:pl-8'>
                            <img src= {card1} alt=""  className="card-img1"/>
                      </div>
                      <div className="card-par">

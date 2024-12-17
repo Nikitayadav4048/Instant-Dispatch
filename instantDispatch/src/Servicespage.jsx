@@ -12,8 +12,8 @@ const Servicespage = () => {
     <div>
         <Navbar/>
     <Mainservice/>
+    <Tryus/>
     <Fastservice/>
-      <Tryus/>
       <Footer/>
     </div>
   )

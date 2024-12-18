@@ -12,7 +12,7 @@ import business from '../../assets/business.png'
                      Whether you're a small startup or a large enterprise, our services are tailored to ensure seamless and timely deliveries. 
                     </p>
 
-                    <button className='bus-btn'>Know more</button>
+                    <button className='bus-btn font-bold'>Know more</button>
             </div>
             <div className="business-img">
                <img src={business} alt="" className='bus-img' />

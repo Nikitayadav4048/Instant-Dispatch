@@ -1,14 +1,15 @@
 
 // import Home from "./Home";
-import Servicespage from "./Servicespage";
+// import Servicespage from "./Servicespage";
+import Oderlistpage from "./Oderlistpage";
 
 export default function App() {
   return (
 
    <>
       {/* <Home/> */}
-      <Servicespage />
-     
+      {/* <Servicespage /> */}
+      <Oderlistpage />
    </>
 
    

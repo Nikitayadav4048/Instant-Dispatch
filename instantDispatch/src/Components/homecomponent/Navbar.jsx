@@ -1,9 +1,25 @@
 import "./Navbar.css"
 import logo from '../../assets/logo-final.png';
-import { useState } from "react";
+import { useState , useEffect } from "react";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => { 
+    const handleScroll = () => { 
+      let navBar = document.querySelector('nav'); 
+      if (window.scrollY > 0) {
+         navBar.style.boxShadow = '0 5px 20px rgba(190, 190, 190, 0.15)'; 
+        } else { 
+          navBar.style.boxShadow = 'none';
+         } 
+        }; 
+        document.addEventListener('scroll', handleScroll); 
+        return () => { document.removeEventListener('scroll', handleScroll); 
+
+        }; 
+      }, []);
+
   return (
    
     <nav className="main-div">

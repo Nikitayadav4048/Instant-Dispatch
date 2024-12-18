@@ -1,0 +1,29 @@
+*{
+    margin: 0%;
+    padding: 0%;
+}
+.orderlistheader {
+    /* margin-top: 45px;
+    margin-bottom: 99px; */
+    background-image: url('../../assets/map4.jpg');
+     /* Path to your image */ background-size: cover; /* Ensures the image covers the whole area */ 
+     background-repeat: no-repeat; /* Prevents the image from repeating */ 
+     background-position: center;
+}
+.orderlistheader h1{
+    font-size: 50px;
+}
+.orderlistheader p{
+    font-size: 30px;
+}
+.btn-color{
+    background-color: #F8AD42; 
+    color: black;
+}
+.tablecon{
+    margin-bottom: 10%;
+    /* margin-left: 5%; */
+}
+tr:nth-child(odd) {
+    background-color: #F8F5F3;
+  }

@@ -11,7 +11,7 @@ import './chooseus.css'
                 ensuring safe deliveries every time. Our comprehensive insurance coverage provides peace of mind, 
                 while our 24/7 support guarantees we're always here for you. Choose us for reliable, sanitized, and efficient delivery services.</p>
                 
-                <button className='bus-btn'>Know more</button>
+                <button className='bus-btn font-bold'>Know more</button>
        </div> 
         <div className="choose-img">
              <img src={chooseimg} alt="Image" className='h-96 pr-'/>

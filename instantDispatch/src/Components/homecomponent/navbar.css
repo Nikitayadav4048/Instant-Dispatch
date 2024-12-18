@@ -5,7 +5,10 @@
 
 
 .main-div{
-background-color: #F8AD42; 
+ position: fixed; top: 0; width: 100%;
+  z-index: 1000; /* Ensures the navbar stays above other elements */
+   background-color: #F8AD42; /* Initial background color */
+    transition: box-shadow 0.3s; /* Smooth transition for the shadow effect */ 
 
 }
 .nav-brand{

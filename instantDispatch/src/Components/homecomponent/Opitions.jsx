@@ -1,5 +1,5 @@
 import React from 'react'
-import options from '../../assets/option2.jpg'
+import options from '../../assets/options.png' 
 import './options.css'
  const Opitions = () => {
   return (

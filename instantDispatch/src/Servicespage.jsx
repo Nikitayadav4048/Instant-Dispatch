@@ -14,7 +14,7 @@ const Servicespage = () => {
         <Mainservice />
         {/* <Howdeliverywork /> */}
         <Tryus />
-        <Fastservice />
+        {/* <Fastservice /> */}
         <Footer />
     </div>
   )

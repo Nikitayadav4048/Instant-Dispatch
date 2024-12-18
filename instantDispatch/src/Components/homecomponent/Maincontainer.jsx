@@ -13,7 +13,7 @@ const Maincontainer = () => {
     <p className='sec1-h mb-9'>INSTANT DISPATCH</p>
     <p className='sec1-para2'>A courier or parcel dilievery Management system</p>
 
-    <button className='btn'>Book now</button>
+    <button className='btn font-bold'>Book now</button>
     </div>
     <div className="sec2">
       <img src={image} alt="" className='fast-img'/>

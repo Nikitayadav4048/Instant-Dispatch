@@ -2,11 +2,9 @@ import Navbar from "./Components/homecomponent/Navbar";
 import Business from "./Components/homecomponent/Business";
 import Chooseus from "./Components/homecomponent/Chooseus";
 import Maincontainer from "./Components/homecomponent/Maincontainer";
-
-
-import Opitions from "./Components/homecomponent/Opitions";
 import Safety from "./Components/homecomponent/Safety";
 import Footer from "./Components/homecomponent/footer";
+import Process from "./Components/homecomponent/Process";
 
 
 const Home = () => {
@@ -15,7 +13,7 @@ const Home = () => {
       <Navbar/> 
       <Maincontainer />
       <Chooseus />
-       <Opitions />
+       <Process/>
        <Safety />
       <Business />
       <Footer />

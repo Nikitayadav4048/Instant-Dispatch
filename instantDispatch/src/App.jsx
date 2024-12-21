@@ -1,15 +1,18 @@
 
-// import Home from "./Home";
+import Home from "./Home";
 // import Servicespage from "./Servicespage";
-import Oderlistpage from "./Oderlistpage";
+// import Oderlistpage from "./Oderlistpage";
+
+// import Orderdetails from "./Components/Orderlist/Orderdetails";
 
 export default function App() {
   return (
 
    <>
-      {/* <Home/> */}
+      <Home/>
       {/* <Servicespage /> */}
-      <Oderlistpage />
+      {/* <Oderlistpage /> */}
+      {/* <Orderdetails /> */}
    </>
 
    

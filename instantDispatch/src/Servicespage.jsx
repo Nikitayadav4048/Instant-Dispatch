@@ -1,22 +1,21 @@
-import React from 'react'
-import Mainservice from './Components/servicecomponent/mainservice'
+
+import Footer from './Components/homecomponent/footer';
 import Navbar from './Components/homecomponent/Navbar'
-import Footer from './Components/homecomponent/footer'
-import Tryus from './Components/servicecomponent/Tryus'
-import Fastservice from './Components/servicecomponent/Fastservice'
-// import Howdeliverywork from './Components/servicecomponent/Howdeliverywork'
-// import Cards from './Components/servicecomponent/Cards'
+import Fastservice from './Components/servicecomponent/Fastservice';
+import Mainservice from './Components/servicecomponent/Mainservice';
+import Tryus from './Components/servicecomponent/Tryus';
+
+
 
 const Servicespage = () => {
   return (
     <div>
         <Navbar/>
-        <Mainservice />
-        {/* <Howdeliverywork /> */}
-        <Tryus />
-        {/* <Fastservice /> */}
-        <Footer />
+    <Mainservice/>
+    <Fastservice/>
+      <Tryus/>
+      <Footer/>
     </div>
   )
 }
-export default Servicespage 
+export default Servicespage; 

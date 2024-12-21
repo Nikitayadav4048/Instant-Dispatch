@@ -1,4 +1,4 @@
-import React from 'react'
+
 import './mainservice.css' 
 import service from '../../assets/Service.png'
 import card1 from '../../assets/card1.png'

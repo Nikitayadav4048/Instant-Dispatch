@@ -1,7 +1,7 @@
 import React from 'react';
 import './dashbord.css' 
 
-const Dashbord = () => {
+const Dashbord = ({ ordersCount, outForDeliveryCount }) => {
   return (
 
 <div className="bg-white p-4 rounded-lg shadow-md dashbord">
@@ -13,14 +13,14 @@ const Dashbord = () => {
       {/* <button className="view-btn">View Orders</button> */}
       <button className="view-btn hover:bg-orange-500 font-bold py-1 px-2 rounded border-none">View Orders</button> 
     </div>
-    <p className="text-lg font-bold">7</p>
+    <p className="text-lg font-bold">{ordersCount}</p>
   </div>
    <div className="dashcolor p-4 rounded-lg">
     <div className="flex justify-between items-center">
       <h3 className="text-sm font-semibold mb-2">Out for Delivery</h3>
       <button className="view-btn hover:bg-orange-500 font-bold py-1 px-2 rounded border-none">Pending</button> 
     </div>
-    <p className="text-lg font-bold">5</p>
+    <p className="text-lg font-bold">{outForDeliveryCount}</p>
   </div>
    <div className="dashcolor p-4 rounded-lg">
     <div className="flex justify-between items-center">

@@ -1,4 +1,4 @@
-import React from 'react'
+
 import './tryus.css' 
 import Try from '../../assets/tryus.png'
  

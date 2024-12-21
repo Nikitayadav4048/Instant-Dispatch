@@ -28,15 +28,15 @@ const Mainservice = () => {
                        we offer peace of mind from the moment you dispatch your package until it reaches its destination. Trust us to deliver excellence, every time.</p>
             </div> 
             <div className="service-img">
-                <img src= {service} alt="img"  />
+                <img src= {service} alt="img" className='s-img' />
             </div>
          </div>
 {/* 3 */}
          <div className="service-cards flex md:flex-wrap lg:flex-nowrap flex-wrap ">
             {/* 1 */}
-               <div className="card1">
-                     <div className='pl-1 md:pl-8 lg:pl-8'>
-                           <img src= {card1} alt=""  className="card-img1"/>
+               <div className="card1 ">
+                     <div className='card-imgs'>
+                           <img src= {card1} alt=""  className="card-img1 "/>
                      </div>
                      <div className="card-par">
                      <h1 className='text-2xl head'>Swift Biker</h1>
@@ -47,8 +47,8 @@ const Mainservice = () => {
                </div>
                {/* 2 */}
                <div className="card2">
-               <div className='pl-8'>
-               <img src={card2} alt="" className="card-img2" /> 
+               <div className='card-imgs'>
+               <img src={card2} alt="" className="card-img2 "  /> 
                  </div>
                  <div className="card-par">
                     <h1 className='text-2xl head'>Motocycle Rider</h1>
@@ -59,7 +59,7 @@ const Mainservice = () => {
                </div>
                {/* 3 */}
                <div className="card3">
-               <div className='pl-8'>
+               <div className='card-imgs'>
                <img src={card3} alt="" className="card-img3" />
                  </div>
                  <div className="card-par ">

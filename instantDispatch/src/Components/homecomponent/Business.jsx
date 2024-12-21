@@ -1,4 +1,4 @@
-import React from 'react'
+
 import './Business.css'
 import business from '../../assets/business.png'
  const Business = () => {
@@ -9,7 +9,7 @@ import business from '../../assets/business.png'
                  <h1 className='busniess-head p-4 text-4xl mt-8'>Business Solution</h1>
                  <p className='busniess-par pl-7 text-lg mt-8'>At Instant Dispatch, we understand that efficient and reliable delivery is crucial for your business success.
                      Our comprehensive business solutions are designed to meet the unique needs of companies of all sizes. 
-                     Whether you're a small startup or a large enterprise, our services are tailored to ensure seamless and timely deliveries. 
+                     Whether you are a small startup or a large enterprise, our services are tailored to ensure seamless and timely deliveries. 
                     </p>
 
                     <button className='bus-btn'>Know more</button>

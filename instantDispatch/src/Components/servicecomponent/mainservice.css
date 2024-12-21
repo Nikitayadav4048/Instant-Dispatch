@@ -19,6 +19,8 @@
 }
 .service-img{
     padding-left: 220px;
+    display: flex ;
+    justify-content: center;
 }
 .sec2-header{
     margin-left: 20px;
@@ -113,13 +115,17 @@
 
 }
 
+.card-imgs{
+    padding-left: 32px;
+}
 @media (max-width: 600px) {
      
     .service-img{
         padding-left: 0px;
+
         
     }
-   .img{
+   .s-img{
     width: 80%;
    }
 
@@ -130,6 +136,9 @@
      
     .service-text{
         width: 80%;
+    }
+    .card-imgs{
+        padding-left: 0;
     }
 
     }

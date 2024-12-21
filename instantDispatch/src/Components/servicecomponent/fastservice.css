@@ -14,10 +14,16 @@
     padding-left: 2%;
     border-left: 2px solid red;
 }
+
 .fast-text p{
     padding-left: 5%;
     padding-top: 6%;
     width: 703px;
+}
+.fast-img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .fastimg{
     padding-left: 34%;

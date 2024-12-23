@@ -5,9 +5,9 @@ const ForCustomer = () => {
     <>
         <div className="section3 flex  flex-wrap justify-center gap-40 my-40 ">
           <div className="section3-part1">
-          <img src={custimg} alt="" className='sec3-img cust-img'/>
+          <img src={custimg} alt="" className='sec3-img  cust-img'/>
           </div>
-         <div className="section3-part2 w-96 flex flex-col justify-center px-4 md:px-0 lg:px-0">
+         <div className="section3-part2 w-96 flex flex-col justify-center  px-4 md:px-0 lg:px-0">
          <h2 className='section3-heading mb-9'>FOR CUSTOMERS</h2>
            <p className='section3-p text-lg mb-9'> We understand that our customers value speed,
              reliability, and convenience. Our service is designed to provide

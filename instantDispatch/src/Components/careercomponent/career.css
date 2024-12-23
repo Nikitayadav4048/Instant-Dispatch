@@ -1,6 +1,6 @@
 .section1{
     height: 500px;
-
+ 
  }
  
  .section1-heading{
@@ -30,9 +30,7 @@
     padding-left: 20px;
     padding-top:3px;
 
-    position: absolute;
-    left: 138px;
-    top: 649px;   
+     
 }
 
 .section2-p{
@@ -42,7 +40,7 @@
 
 .sec2-img{
    height: 400px;
-   width: 420px;
+   width: 500px;
     
 }
 @media  (max-width: 572px) {

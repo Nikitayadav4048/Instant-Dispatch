@@ -5,7 +5,7 @@ import Try from '../../assets/tryus.png'
  const Tryus = () => {
   return (
     <div>
-        <div className="try-us flex md:flex-wrap lg:flex-nowrap flex-wrap">
+        <div className="try-us flex md:flex-wrap lg:flex-nowrap flex-wrap items-center">
             <div className="try-img w-full md:w-1/2 lg:w-1/2">
                 <img src={Try} alt="" className='tryus ' />
             </div>

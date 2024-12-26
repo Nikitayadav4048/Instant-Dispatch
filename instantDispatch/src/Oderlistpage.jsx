@@ -1,16 +1,16 @@
 import React from 'react'
-import Navbar from './Components/homecomponent/Navbar'
-import Footer from './Components/homecomponent/footer'
+// import Navbar from './Components/homecomponent/Navbar'
+import Footer from './Components/homecomponent/Footer'
 import Orderlisthead from './Components/Orderlist/orderlisthead'
 // import Dashbord from './Components/Orderlist/Dashbord'
 
  const Oderlistpage = () => {
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       {/* <Dashbord />  */}
       <Orderlisthead />
-      <Footer />
+      {/* <Footer /> */}
     </>
   )
 }

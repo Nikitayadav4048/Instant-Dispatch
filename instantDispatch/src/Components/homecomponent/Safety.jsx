@@ -1,4 +1,4 @@
-import React from 'react'
+
 import './safety.css' 
 import safe from '../../assets/safety2.png'
 

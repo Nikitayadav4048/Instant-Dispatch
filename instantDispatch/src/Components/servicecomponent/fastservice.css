@@ -14,10 +14,16 @@
     padding-left: 2%;
     border-left: 2px solid red;
 }
+
 .fast-text p{
     padding-left: 5%;
     padding-top: 6%;
     width: 703px;
+}
+.fast-img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .fastimg{
     padding-left: 34%;
@@ -33,3 +39,16 @@
     background-color: #F8AD42;
     border: none;
 }
+
+
+@media (max-width:800px) {
+     
+    .fast-text p{
+      
+        width: 70%;
+    }
+    .fastimg{
+        padding-left: 0;
+        width: 80%;
+    }
+    }

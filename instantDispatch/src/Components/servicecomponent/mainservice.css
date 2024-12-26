@@ -19,6 +19,8 @@
 }
 .service-img{
     padding-left: 220px;
+    display: flex ;
+    justify-content: center;
 }
 .sec2-header{
     margin-left: 20px;
@@ -108,4 +110,43 @@
     background-color: #F8AD42;
     border: none;
 }
+.img{
 
+
+}
+
+.card-imgs{
+    padding-left: 32px;
+}
+@media (max-width: 600px) {
+     
+    .service-img{
+        padding-left: 0px;
+
+        
+    }
+   .s-img{
+    width: 80%;
+   }
+
+    }
+
+    
+@media (max-width: 1100px) {
+     
+    .service-text{
+        width: 80%;
+    }
+    .card-imgs{
+        padding-left: 0;
+    }
+
+    }
+
+    /* @media (min-width:1088) and (max-width: 1005px) {
+     
+        .card3 ,.card2 , .card1{
+            padding-left: 0px;
+        }
+    
+        }   */

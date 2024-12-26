@@ -6,6 +6,15 @@
     font-size: 50px;
     filter: blur(0);
 }
+.order-details-header h1{
+    font-size: 50px;
+    filter: blur(0);
+}
+.order-details-header p{
+    font-size: 30px;
+    filter: blur(0);
+}
+
 .orderlistheader p{
     font-size: 30px;
     filter: blur(0);

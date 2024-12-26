@@ -4,8 +4,8 @@ import fast from '../../assets/fast.gif'
  const Fastservice = () => {
   return (
     <div>
-           <div className="fastservice flex">
-            <div className="fast-text">
+           <div className="fastservice flex md:flex-wrap flex-wrap lg:justify-normal md:justify-center justify-center ">
+            <div className="fast-text ">
                 <h1 className='text-4xl'>Do You Want Fast Service? Just Book Your Rider!</h1>
                 <p className='text-lg'>Experience the speed and efficiency of Instant Dispatch! Whether you need a quick bike delivery,
                      eco-friendly bicycle service, or a secure small truck delivery, booking your rider has never been easier.
@@ -14,11 +14,11 @@ import fast from '../../assets/fast.gif'
 
                     <button className='safe-btn font-bold '>Try Us</button>
             </div>
-               <div className="fast-img">
+               <div className="fast-img flex justify-center">
                     <img src={fast} alt=""  className='fastimg'/>
                </div>
            </div>
     </div>
   )
 }
-export default Fastservice 
+export default Fastservice ;

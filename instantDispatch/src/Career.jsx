@@ -2,7 +2,8 @@ import CareerForm from "./Components/careercomponent/CareerForm"
 import Careerus from "./Components/careercomponent/Careerus"
 import Howto from "./Components/careercomponent/Howto"
 import Footer from "./Components/homecomponent/Footer"
-import Navbar from "./Components/homecomponent/Navbar"
+
+import CustomerNav from "./Components/NavbarComponents/CustomerNav"
 
 
 
@@ -10,7 +11,8 @@ const Career = () => {
   return (
     <>
     
-    <Navbar/>
+
+    <CustomerNav/>
    <Careerus/>
     <Howto/>
       <CareerForm/>

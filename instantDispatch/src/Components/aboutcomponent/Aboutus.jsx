@@ -17,8 +17,8 @@ const Aboutus = () => {
 
 <div className="section2 ">
     <div className="section2-div1">
-    <h1 className="mb-10 text-4xl section2-heading "> Who we are </h1>
-    <p className="text-lg section2-p"> We are a dedicated
+    <h1 className="mb-10  text-4xl section2-heading "> Who we are </h1>
+    <p className="text-lg section2-p mt-8"> We are a dedicated
         and passionate team committed to revolutionizing the 
         dispatch industry. Our missionis to provide seamless,
         reliable, and efficient dispatch services that meet

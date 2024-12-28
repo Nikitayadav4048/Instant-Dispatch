@@ -1,4 +1,4 @@
-import Navbar from "./Components/homecomponent/Navbar";
+import Navbar from "./Components/NavbarComponent/Navbar";
 import Business from "./Components/homecomponent/Business";
 import Chooseus from "./Components/homecomponent/Chooseus";
 import Maincontainer from "./Components/homecomponent/Maincontainer";

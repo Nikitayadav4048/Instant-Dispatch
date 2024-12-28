@@ -20,13 +20,13 @@
 // }
 
 import React from 'react';
-import Oderlistpage from "./Oderlistpage";
-import { OrderProvider } from './Components/Orderlist/OrderProvider';
+import Oderlistpage from './Oderlistpage';
+// import Oderlistpage from "./Oderlistpage";
+// import { OrderProvider } from './Components/Orderlist/OrderProvider';
 
 export default function App() {
   return (
-    <OrderProvider>
-     <Oderlistpage/>
-    </OrderProvider>
+     <Oderlistpage />
   );
 }
+

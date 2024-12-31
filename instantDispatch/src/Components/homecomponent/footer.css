@@ -30,3 +30,16 @@
     padding-left: 11px;
     padding-right: 11px;
 }
+
+.f-section1, .copyright{
+   margin-left: 80px;
+}
+
+@media (max-width: 735px) {
+       
+   .f-section1 , .copyright{
+      margin-left: 20px;
+      margin-right: 20px;
+   }
+  
+ }

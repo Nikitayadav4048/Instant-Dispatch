@@ -1,0 +1,22 @@
+*{
+    padding: 0%;
+    margin: 0%;
+}
+.aboutwork{
+    margin-top: 5%;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+.box-width{
+    width: 90%;
+}
+.OrderPlacement{
+  
+}
+.paretext{
+    font-size: 1.125rem /* 18px */;
+    line-height: 1.75rem /* 28px */;
+}
+.icon{
+    height: 30px;
+}

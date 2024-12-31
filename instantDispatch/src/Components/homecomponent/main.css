@@ -1,0 +1,64 @@
+body{
+    overflow-x: hidden;
+}
+.main{
+    display: flex;
+    justify-content: space-between;
+}
+.fast-img{
+    margin-top: 30px;
+    width: 950px;
+    height: 600px;
+}
+.sec1-h{
+    font-size: 120px;
+    font-family: "Merriweather";
+}
+.sec1-para1{
+    font-size: 31px;
+    font-family: 'Overlock';
+
+}
+.sec1-para2{
+    font-size: 26px;
+    font-family: 'Montaga';
+    margin-left: 30px;
+}
+.btn{
+    margin-top: 40px;
+    margin-left: 20px;
+    padding: 10px;
+    border-radius: 20px;
+    width: 130px;
+    font-size: 17px;
+    background-color: #F8AD42;
+    border: none;
+}
+
+.trust-img{
+    padding-top: 20px;
+    padding-right: 50px;
+    border-right: 2px solid red;
+    padding-right: 90px;
+}
+.sefty{
+    padding-top: 20px;
+    padding-right: 50px;
+    border-right: 2px solid red;
+    padding-right: 90px;
+}
+.time-line{
+    padding-top: 20px;
+}
+.section2{
+   
+    padding: 52px;
+    margin-bottom: 10% ;
+    /* background-color: rgb(250, 250, 250); */
+}
+.icon-padding{
+    padding: 80px ;
+}
+.icon-background{
+   
+}

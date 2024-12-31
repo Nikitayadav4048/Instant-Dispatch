@@ -13,8 +13,8 @@ Start booking your rider now
 </div>
 
 <div className="section2 ">
-   <div className="section2-div1  py-20 ">
-   <h1 className="mb-10 text-4xl section2-heading "> Book now </h1>
+   <div className="section2-div1  py-10 ">
+   <h1 className="mb-2 text-4xl section2-heading   "> Book now </h1>
    <p className="text-lg section2-p"> Booking a delivery with
       Instant Dispatch is simple, efficient, and designed to
        meet your specific needs. Whether you are sending a small

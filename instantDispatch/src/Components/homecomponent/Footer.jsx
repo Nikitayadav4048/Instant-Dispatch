@@ -2,10 +2,10 @@ import "./footer.css"
 import logo from '../../assets/logo-final.png';
 const Footer = () => {
   return (
-    <div className="footer w-full pb-10 pt-6  ">
+    <div className="footer w-full pb-10 pt-6  mt-20">
 
 
-        <div className="f-section1 flex flex-wrap gap-2 ms-20  ">
+        <div className="f-section1 flex flex-wrap gap-16  ">
 <div className="part1  md:w-96">
 {/* <h2 className="mb-6 ">INSTANT DISPATCH</h2> */}
   <img src={logo} alt="logo"  className = "nav-logo nav-brand mb-4"/>
@@ -21,7 +21,7 @@ const Footer = () => {
         <li><a href="#"><i className="fab fa-linkedin-in"></i></a></li>
     </ul>
 </div>
-<div className="part2 flex flex-wrap gap-28 pt-20">
+<div className="part2 flex flex-wrap justify-center gap-28 pt-20">
 
 <ul className="footer-list">
 <li><a href="#"></a>Home</li>
@@ -34,7 +34,7 @@ const Footer = () => {
       <li><a href="#"></a>Same-Day Delivery</li>
       <li><a href="#"></a>Real-Time Tracking</li>
       <li><a href="#"></a>Customized Solutions</li>
-      <li><a href="#"></a>Efficient Dispatch Management</li>
+      <li><a href="#"></a>Efficient Management</li>
   </ul>
 
   <ul className="footer-list">
@@ -58,9 +58,10 @@ const Footer = () => {
 
        <div className="mt-10">
        <hr className="hori-line"></hr>
-       <p className="ms-20"> &copy; 2024 Instant Dispatch. All rights reserved.</p>
+       <p className=" copyright"> &copy; 2024 Instant Dispatch. All rights reserved.</p>
        </div>
     </div>
+  
   )
 }
 

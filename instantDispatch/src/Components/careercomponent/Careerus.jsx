@@ -13,7 +13,7 @@ const Careerus = () => {
     </div>
     
     <div className="section2 ">
-        <div className="section2-div1  py-20 ">
+        <div className="section2-div1  py-10 ">
         <h1 className="mb-10 text-4xl section2-heading ">Join Our Team at Instant Dispatch </h1>
         <p className="text-lg section2-p ps-7">We are seeking reliable and 
           hardworking delivery drivers to join our team. At Instant Dispatch,

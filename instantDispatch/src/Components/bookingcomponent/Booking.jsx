@@ -12,7 +12,7 @@ Start booking your rider now
  </p>
 </div>
 
-<div className="section2 ">
+{/* <div className="section2 ">
    <div className="section2-div1  py-10 ">
    <h1 className="mb-2 text-4xl section2-heading   "> Book now </h1>
    <p className="text-lg section2-p"> Booking a delivery with
@@ -28,7 +28,7 @@ Start booking your rider now
          <div>
          <img src={sec2img} alt="" className="sec2-img py-10" />
          </div>
-</div>
+</div> */}
 
    </>
   )

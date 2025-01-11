@@ -9,6 +9,7 @@ import Career from "./Career";
 import {createBrowserRouter, RouterProvider} from "react-router-dom"
 import Servicespage from "./Servicespage";
 import Home from "./home";
+import Orderlisthead from "./Components/Orderlist/orderlisthead";
 const router = createBrowserRouter([
   {
     path:"/",
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
   {
     path:"/services",
     element:<Servicespage/>
+  },
+  {
+    path:"/order",
+    element:<Orderlisthead/>
   }
 ]);
 

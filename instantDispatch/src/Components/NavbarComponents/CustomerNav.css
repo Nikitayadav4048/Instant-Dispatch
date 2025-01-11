@@ -45,8 +45,9 @@ background-color: #F8AD42;
 }
 
 .nav-item.active {
-   text-decoration: underline rgb(198, 44, 44) 2px;
-   text-underline-offset: 5px;
+   /* text-decoration: underline rgb(238, 234, 234) 2px;
+   text-underline-offset: 5px; */
+font-weight: bolder;
   }
   
 

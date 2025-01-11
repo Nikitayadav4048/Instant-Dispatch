@@ -23,6 +23,7 @@ const CustomerNav = () => {
             <NavLink to="/services" className="nav-item block md:inline-block ml-5 md:ml-0 md:mt-0 mt-4 mx-2 text-black" activeClassName="active">Services</NavLink>
             <NavLink to="/Book" className="nav-item block md:inline-block ml-5 md:ml-0 md:mt-0 mt-4 mx-2 text-black" activeClassName="active">Booking</NavLink>
             <NavLink to="/career" className="nav-item block md:inline-block ml-5 md:ml-0 md:mt-0 mt-4 mx-2 text-black" activeClassName="active">Career</NavLink>
+            <NavLink to="/order" className="nav-item block md:inline-block ml-5 md:ml-0 md:mt-0 mt-4 mx-2 text-black" activeClassName="active">Orders</NavLink>
           </div>
           <button className="login-img ml-3 md:ml-20 mr-20 md:mb-3 mb-5">A</button>
         </div>

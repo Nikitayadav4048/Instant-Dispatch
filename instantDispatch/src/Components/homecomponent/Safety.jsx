@@ -5,8 +5,8 @@ import safe from '../../assets/safety2.png'
 const Safety = () => {
   return (
     <div> 
-       <div className="safety flex">
-           <div className="safety-img">
+       <div className="safety flex flex-wrap md:flex-wrap lg:flex-nowrap justify-center">
+           <div className="safety-img ">
               <img src={safe} alt="" className='safe-img' />
            </div>
            <div className="safety-text">

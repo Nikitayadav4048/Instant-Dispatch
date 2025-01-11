@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 import React from 'react';
 import { IoMdArrowBack } from 'react-icons/io';
 import { MdLocationOn, MdPhone, MdPayment, MdDateRange, MdBusiness, MdPerson } from 'react-icons/md';

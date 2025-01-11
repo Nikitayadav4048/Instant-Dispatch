@@ -98,7 +98,7 @@ const BookForm = () => {
   }, []);
 
   return (
-    <div className="booking-form-container mt-36 mb-36">
+    <div className="booking-form-container mt-36 mb-36 ">
       <h1 className="booking-heading">Book a Rider</h1>
      
       <form onSubmit={handleSubmit} className="booking-form flex flex-col">

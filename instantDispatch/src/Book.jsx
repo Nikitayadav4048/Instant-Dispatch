@@ -12,8 +12,7 @@ function Book() {
     <>
     <CustomerNav/>
       <Booking/>
-     
-      {/* <Form/> */}
+  
     <BookForm/>
       <Footer/>
     </>

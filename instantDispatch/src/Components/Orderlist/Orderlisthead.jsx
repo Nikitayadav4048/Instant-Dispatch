@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 // import React from 'react';
 // import './orderlisthead.css';
 // import Navbar from '../NavbarComponent/RiderNav';
@@ -107,14 +108,16 @@
 
 // export default Orderlisthead;
 // src/components/Orderlisthead.js
-import React from 'react';
+
 import './orderlisthead.css';
-import Navbar from '../NavbarComponent/RiderNav';
+
 import Footer from '../homecomponent/Footer';
 import Dashboard from './Dashboard';
 import OrderDetails from './Orderdetails';
 import { useSelector, useDispatch } from 'react-redux';
 import { handleDetails, handleBack, handleAccept, handleComplete, handleFilter } from '../Orderlist/ordersSlice';
+// import RiderNav from '../NavbarComponents/RiderNav';
+import CustomerNav from '../NavbarComponents/CustomerNav';
 
 const Orderlisthead = () => {
   const dispatch = useDispatch();
@@ -128,7 +131,7 @@ const Orderlisthead = () => {
 
   return (
     <>
-      {!selectedOrder && <Navbar />}
+      {!selectedOrder && <CustomerNav />}
       {selectedOrder ? (
         <OrderDetails order={selectedOrder} onBack={() => dispatch(handleBack())} onComplete={() => dispatch(handleComplete(selectedOrder.id))} />
       ) : (

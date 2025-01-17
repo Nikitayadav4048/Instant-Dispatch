@@ -20,13 +20,12 @@ background-color: #F8AD42;
 .nav-item{
     text-decoration: none;
     font-size: 20px;
-    font-weight:500;
    
 }
 .login-img{
     
  height: 42px;
- width: 42px;
+ width: 95px;
  display: flex;
  justify-content: center;
  align-items: center;
@@ -35,7 +34,7 @@ background-color: #F8AD42;
  
  
  border: none;
- border-radius: 50%;
+ border-radius: 34px;
  margin-top: 10px;
 
 

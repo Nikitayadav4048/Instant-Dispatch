@@ -1,3 +1,5 @@
+/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable react/prop-types */
 // import React from 'react';
 // import './dashbord.css';
 
@@ -38,7 +40,7 @@
 
 
 // src/components/Dashboard.js
-import React from 'react';
+
 import './dashbord.css';
 import { useDispatch } from 'react-redux';
 import { handleFilter } from '../Orderlist/ordersSlice';

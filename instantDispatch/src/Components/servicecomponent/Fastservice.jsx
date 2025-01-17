@@ -4,7 +4,7 @@ import fast from '../../assets/fast.gif'
  const Fastservice = () => {
   return (
     <div>
-           <div className="fastservice flex md:flex-wrap flex-wrap lg:justify-normal md:justify-center justify-center ">
+           <div className="fastservice flex lg:flex-nowrap md:flex-wrap flex-wrap lg:justify-normal md:justify-center justify-center ">
             <div className="fast-text ">
                 <h1 className='text-4xl'>Do You Want Fast Service? Just Book Your Rider!</h1>
                 <p className='text-lg'>Experience the speed and efficiency of Instant Dispatch! Whether you need a quick bike delivery,

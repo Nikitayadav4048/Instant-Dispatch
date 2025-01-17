@@ -4,14 +4,15 @@ body{
 .main{
     display: flex;
     justify-content: space-between;
+    
 }
 .fast-img{
     margin-top: 30px;
-    width: 950px;
-    height: 600px;
+    /* max-width: 950px;
+    max-height: 600px; */
 }
 .sec1-h{
-    font-size: 120px;
+    font-size: 8vw;
     font-family: "Merriweather";
 }
 .sec1-para1{
@@ -49,6 +50,7 @@ body{
 }
 .time-line{
     padding-top: 20px;
+    
 }
 .section2{
    
@@ -62,3 +64,31 @@ body{
 .icon-background{
    
 }
+
+
+@media  (max-width: 1000px) {
+  
+    .sec1-para2{
+        
+        margin-left: 0px;
+    }
+
+ }
+ 
+ @media  (max-width: 1074px) {
+  .sefty{
+    border-right: none;
+  }
+
+ }
+
+  
+ @media  (max-width: 798px) {
+    .trust-img{
+      border-right: none;
+    }
+    .time-line{
+        padding-right: 90px;
+    }
+  
+   }

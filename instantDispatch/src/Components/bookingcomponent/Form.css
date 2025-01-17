@@ -1,0 +1,112 @@
+.booking-form-container {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 100px;
+}
+
+  
+
+  .booking-heading {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .booking-form h2 {
+    margin-top: 20px;
+    font-size: 1.5rem;
+  }
+
+  .booking-form input,
+  .booking-form textarea {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    
+  }
+
+  .booking-form textarea {
+    resize: vertical;
+  }
+  
+  
+  
+  .vehicle-options label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .vehicle-options i {
+    font-size: 2rem;
+    margin-top: 5px;
+  }
+  
+  
+  .booking-button{
+    background-color: #F8AD42;
+    font-size: 15px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .booking-button:hover {
+    background-color: #e9a038;
+  }
+  
+  .suggestions-list-pickup {
+    list-style: none;
+    padding: 0;
+    margin-top: 190px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    max-height: 150px;
+    max-width: 600px;
+    overflow-y: auto;
+    background-color: #fff;
+    position: absolute;
+    width: calc(100% - 16px);
+  }
+
+  .suggestions-list-dilevery {
+    list-style: none;
+    padding: 0;
+    margin-top: 240px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    max-height: 150px;
+    max-width: 600px;
+    overflow-y: auto;
+    background-color: #fff;
+    position: absolute;
+    width: calc(100% - 16px);
+  }
+  
+  .suggestion-item {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+    list-style: none;
+  }
+  
+  .suggestion-item:last-child {
+    border-bottom: none;
+  }
+  
+  .suggestion-item:hover {
+    background-color: #fcf8f1;
+  }
+  
+#error-border{
+  border: 1px solid red;
+
+}

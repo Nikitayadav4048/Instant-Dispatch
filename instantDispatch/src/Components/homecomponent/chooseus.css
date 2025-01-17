@@ -16,13 +16,20 @@
 .par-choose{
    
    width: 70%;
-   word-spacing: 5px; /* Adjust the spacing value as needed */ 
-   padding-top: 1rem; /* Maintain existing padding */
-    padding-left: 1.75rem; /* Maintain existing padding */
+   word-spacing: 5px; 
+   padding-top: 1rem; 
+    padding-left: 1.75rem; 
 }
 .choose-img{
    padding-right: 20px;
+   
+
 }
+.ch-img{
+  width: 440px;
+    height: 400px;
+}
+
 .bus-btn{
     margin-left: 10px;
     margin-top: 40px;
@@ -32,4 +39,15 @@
     font-size: 17px;
     background-color: #F8AD42;
     border: none;
+}
+
+@media  (max-width: 580px) {
+   .ch-img{
+    width: 100%;
+    height: 100%;
+   }
+   .choose-us{
+    padding: 10px;
+   }
+   
 }

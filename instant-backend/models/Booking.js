@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const BookingSchema = new mongoose.Schema({
     name: { type: String, required: true },
-    contact: { type: String, required: true },
+    contact: { type: Number, required: true },
     pickupAddress: { type: String, required: true },
     deliveryAddress: { type: String, required: true },
     parcelDescription: { type: String, required: true },

@@ -79,7 +79,14 @@ const BookForm = () => {
     const isDeliveryValid = await validateAddress(formData.deliveryAddress, 'deliveryAddress');
 
     if (isPickupValid && isDeliveryValid) {
-      console.log('Booking Details:', formData);
+      // console.log('Booking Details:', formData);
+      try {
+         const response = await axios.post('http://localhost:5000/api/book', formData);
+          console.log('Booking successful:', response.data);
+         }
+          catch (err) { 
+            console.error('Error creating booking:', err);
+           }
     } else {
       console.log('One or both addresses are invalid. Please correct them.');
     }

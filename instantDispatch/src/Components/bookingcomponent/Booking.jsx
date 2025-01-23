@@ -1,5 +1,5 @@
 import "./booking.css"
-import sec2img from '../../assets/bookform2.png';
+// import sec2img from '../../assets/bookform2.png';
 
 const Booking = () => {
   return (

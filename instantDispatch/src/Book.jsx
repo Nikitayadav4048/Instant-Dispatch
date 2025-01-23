@@ -14,7 +14,7 @@ function Book() {
       {/* <Navbar/> */}
       <Navbar/>
       <Booking/>
-      <Process/>
+     
       {/* <Form/> */}
     <BookForm/>
       <Footer/>

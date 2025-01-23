@@ -5,11 +5,13 @@ import Footer from "./Components/homecomponent/Footer"
 
 import BookForm from "./Components/bookingcomponent/BookForm"
 import CustomerNav from "./Components/NavbarComponents/CustomerNav"
+import Navbar from "./Components/NavbarComponents/Navbar"
 
 
 function Book() {
   return (
     <>
+      {/* <Navbar/> */}
       <Navbar/>
       <Booking/>
       <Process/>

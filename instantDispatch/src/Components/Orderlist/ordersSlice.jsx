@@ -1,3 +1,5 @@
+
+
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialData = [
@@ -46,8 +48,14 @@ const ordersSlice = createSlice({
         state.filteredData = state.data.filter(order => order.status === action.payload);
       }
     },
+    handleReject: (state, action) => {
+      const updatedData = state.data.filter(item => item.id !== action.payload);
+      state.data = updatedData;
+      state.filteredData = updatedData.filter(order => order.status !== 'Delivered');
+      state.ordersCount -= 1;
+    },
   },
 });
 
-export const { handleAccept, handleDetails, handleBack, handleComplete, handleFilter } = ordersSlice.actions;
-export default ordersSlice.reducer  ; 
+export const { handleAccept, handleDetails, handleBack, handleComplete, handleFilter, handleReject } = ordersSlice.actions;
+export default ordersSlice.reducer;

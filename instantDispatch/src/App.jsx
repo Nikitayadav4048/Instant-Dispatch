@@ -1,31 +1,40 @@
+import Book from "./Book";
 
-// // import Home from "./Home";
-// // import Servicespage from "./Servicespage";
-// import Oderlistpage from "./Oderlistpage";
+import About from "./About";
 
-// // import Orderdetails from "./Components/Orderlist/Orderdetails";
+import Career from "./Career";
 
-// export default function App() {
-//   return (
-
-//    <>
-//       {/* <Home/> */}
-//       {/* <Servicespage /> */}
-//       <Oderlistpage />
-//       {/* <Orderdetails /> */}
-//    </>
-
-   
-//   )
-// }
-
-import React from 'react';
-import Oderlistpage from './Oderlistpage';
-// import Oderlistpage from "./Oderlistpage";
-// import { OrderProvider } from './Components/Orderlist/OrderProvider';
+import {createBrowserRouter, RouterProvider} from "react-router-dom"
+import Servicespage from "./Servicespage";
+import Home from "./home";
+import Orderlisthead from "./Components/Orderlist/orderlisthead";
+const router = createBrowserRouter([
+  {
+    path:"/",
+    element:<Home/>
+  },
+  {
+    path:"/about",
+    element:<About/>
+  },
+  {
+    path:"/career",
+    element:<Career/>
+  },
+  {
+    path:"/book",
+    element:<Book/>
+  },
+  {
+    path:"/services",
+    element:<Servicespage/>
+  },
+  {
+    path:"/order",
+    element:<Orderlisthead/>
+  }
+]);
 
 export default function App() {
-  return (
-     <Oderlistpage />
-  );
+  return <RouterProvider router={router} />
 }

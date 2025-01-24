@@ -1,40 +1,73 @@
-import Book from "./Book";
+// import React, { useEffect } from 'react';
+// import { useDispatch } from 'react-redux';
+// import { fetchBookings } from './Components/redux/ordersSlice';
+// import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+// import Orderlisthead from "./Components/Orderlist/Orderlisthead";
 
-import About from "./About";
+// const router = createBrowserRouter([
+//   {
+//     path: "/order",
+//     element: <Orderlisthead />
+//   }
+// ]);
 
-import Career from "./Career";
+// export default function App() {
+//   const dispatch = useDispatch();
 
-import {createBrowserRouter, RouterProvider} from "react-router-dom"
-import Servicespage from "./Servicespage";
-import Home from "./home";
-import Orderlisthead from "./Components/Orderlist/orderlisthead";
+//   useEffect(() => {
+//     dispatch(fetchBookings());
+//   }, [dispatch]);
+
+//   return <RouterProvider router={router} />;
+// }
+
+// import React, { useEffect } from 'react';
+// import { useDispatch } from 'react-redux';
+// import { fetchBookings } from './Components/redux/ordersSlice';
+// import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+// import Orderlisthead from "./Components/Orderlist/Orderlisthead";
+
+// const router = createBrowserRouter([
+//   {
+//     path: "/order",
+//     element: <Orderlisthead />
+//   }
+// ]);
+
+// export default function App() {
+//   const dispatch = useDispatch();
+
+//   useEffect(() => {
+//     dispatch(fetchBookings());
+//   }, [dispatch]);
+
+//   return <RouterProvider router={router} />;
+// }
+
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { fetchBookings } from './Components/redux/ordersSlice';
+import { createBrowserRouter, RouterProvider, Route } from 'react-router-dom';
+import Orderlisthead from "./Components/Orderlist/Orderlisthead";
+import OrderDetails from "./Components/Orderlist/OrderDetails";
+
 const router = createBrowserRouter([
   {
-    path:"/",
-    element:<Home/>
+    path: "/",
+    element: <Orderlisthead />
   },
   {
-    path:"/about",
-    element:<About/>
-  },
-  {
-    path:"/career",
-    element:<Career/>
-  },
-  {
-    path:"/book",
-    element:<Book/>
-  },
-  {
-    path:"/services",
-    element:<Servicespage/>
-  },
-  {
-    path:"/order",
-    element:<Orderlisthead/>
+    path: "/order/:id",
+    element: <OrderDetails />
   }
 ]);
 
 export default function App() {
-  return <RouterProvider router={router} />
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchBookings());
+  }, [dispatch]);
+
+  return <RouterProvider router={router} />;
 }

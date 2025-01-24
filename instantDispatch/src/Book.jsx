@@ -39,7 +39,8 @@ function Book() {
       }
         {console.log(role)}
       <Booking/>
-  
+     
+      {/* <Form/> */}
     <BookForm/>
       <Footer/>
     </>

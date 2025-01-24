@@ -1,13 +1,19 @@
-/* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
-// import React from 'react';
-// import './dashbord.css';
+/* eslint-disable react/no-unescaped-entities */
 
-// const Dashboard = ({ ordersCount, outForDeliveryCount, completeCount, onFilter }) => {
-//   console.log('Dashbord received:', { ordersCount, outForDeliveryCount, completeCount }); // Debugging log
+// import './dashbord.css';
+// import { useDispatch } from 'react-redux';
+// import { handleFilter } from '../redux/ordersSlice';
+
+// const Dashboard = ({ ordersCount, outForDeliveryCount, completeCount }) => {
+//   const dispatch = useDispatch();
+
+//   const onFilter = (status) => {
+//     dispatch(handleFilter(status));
+//   };
 
 //   return (
-//     <div className="bg-white p-4 rounded-lg shadow-md dashbord">
+//     <div className="bg-white p-4 rounded-lg shadow-md dashboard">
 //       <h2 className="text-xl font-semibold mb-4">Today's Overview</h2>
 //       <div className="grid grid-cols-3 gap-4">
 //         <div className="dashcolor p-4 rounded-lg">
@@ -38,12 +44,9 @@
 
 // export default Dashboard;
 
-
-// src/components/Dashboard.js
-
 import './dashbord.css';
 import { useDispatch } from 'react-redux';
-import { handleFilter } from '../Orderlist/ordersSlice';
+import { handleFilter } from '../redux/ordersSlice';
 
 const Dashboard = ({ ordersCount, outForDeliveryCount, completeCount }) => {
   const dispatch = useDispatch();

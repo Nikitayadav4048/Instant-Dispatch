@@ -5,7 +5,9 @@ import {createBrowserRouter, RouterProvider} from "react-router-dom"
 import Servicespage from "./Servicespage";
 import Home from "./home";
 import Orderlisthead from "./Components/Orderlist/orderlisthead";
-import OrderDetails from "./Components/Orderlist/Orderdetails";
+import OrderDetails from "./Components/Orderlist/OrderDetails";
+import Orderpage from "./Orderpage";
+
 const router = createBrowserRouter([
   {
     path:"/",
@@ -29,7 +31,7 @@ const router = createBrowserRouter([
   },
   {
     path:"/order",
-    element:<Orderlisthead/>
+    element:<Orderpage/>
   },
   {
     path:"/order:id",

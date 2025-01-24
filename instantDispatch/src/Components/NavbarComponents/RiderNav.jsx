@@ -2,12 +2,19 @@
 import "./RIder.css"
 import logo from '../../assets/logo-final.png';
 import { useState } from "react";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const RiderNav = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { logout } = useAuth0();
+  const { user, isAuthenticated } = useAuth0();
+  const [userclick, setUserClick] = useState(false);
+console.log(user);
+const userRole = user['https://instant-dispatch.com/role'];
+console.log(userRole);
 
   return (
-   
+   <>
       <nav className="main-div">
      
      
@@ -22,15 +29,16 @@ const RiderNav = () => {
 
             <div className={`  w-full md:flex md:items-center md:w-auto ${isOpen ? "block" : "hidden"}`}>
   <div className="text-sm md:flex-grow md:flex md:justify-center gap-20">
-    <a href="/home" className=" nav-item block  md:inline-block  ml-5 md:ml-0 md:mt-0 mt-4 mx-2 text-black ">Home</a>
+    <a href="/" className=" nav-item block  md:inline-block  ml-5 md:ml-0 md:mt-0 mt-4 mx-2 text-black ">Home</a>
     <a href="/about" className=" nav-item block md:inline-block ml-5 md:ml-0 md:mt-0  mt-4 mx-2 text-black ">About Us</a>
     <a href="/services" className=" nav-item block md:inline-block  ml-5 md:ml-0 md:mt-0 mt-4 mx-2 text-black ">Services</a>
-    <a href="/Booking" className=" nav-item block md:inline-block  ml-5 md:ml-0 md:mt-0 mt-4 mx-2 text-black ">Orders</a>
-    {/* <a href="/Career" className="  nav-item block md:inline-block  ml-5 md:ml-0 md:mt-0 mt-4 mx-2 text-black ">Career</a> */}
+    <a href="/order" className=" nav-item block md:inline-block  ml-5 md:ml-0 md:mt-0 mt-4 mx-2 text-black ">Orders</a>
+
+   
    
    
   </div>
-  <button className="login-img ml-3  md:ml-20 mr-20 md:mb-3 mb-5 ">A</button>
+  <button className="log-img ml-3  md:ml-20 mr-20 md:mb-3 mb-5 " onClick={() => setUserClick(!userclick)}>{user.email.charAt(0).toUpperCase()}</button>
    
 </div>
         
@@ -39,7 +47,19 @@ const RiderNav = () => {
            
         </div>
       </nav>
- 
+      <div>
+{userclick && (
+   <div className="userDetails  flex flex-col items-center h-40">
+     <p className="my-3">Welcome</p> 
+     <h4 >{user?.name}</h4>
+     <h4 >{user.email}</h4>
+    <p>{userRole}</p>
+      <button className="login-img ml-3 md:ml-20 mr-20 md:mb-3 mt-12"
+       onClick={() => logout({ returnTo: window.location.origin })}> Log Out </button>
+       </div>
+       )}
+</div>
+ </>
   )
 }
 

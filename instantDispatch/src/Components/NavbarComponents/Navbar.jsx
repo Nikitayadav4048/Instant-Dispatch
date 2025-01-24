@@ -1,9 +1,13 @@
-import "./Navbar.css"
+import "./navbar.css"
 import logo from '../../assets/logo-final.png';
 import { useState } from "react";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { loginWithRedirect} = useAuth0();
+  
+ 
   return (
    
     <nav className="main-div">
@@ -21,14 +25,14 @@ const Navbar = () => {
 
             <div className={`  w-full md:flex md:items-center md:w-auto ${isOpen ? "block" : "hidden"}`}>
   <div className="text-sm md:flex-grow md:flex md:justify-center gap-20">
-    <a href="/home" className=" nav-item block  md:inline-block  ml-5 md:ml-0 md:mt-0 mt-4 mx-2 text-black ">Home</a>
+    <a href="/" className=" nav-item block  md:inline-block  ml-5 md:ml-0 md:mt-0 mt-4 mx-2 text-black ">Home</a>
     <a href="/about" className="  nav-item block md:inline-block ml-5 md:ml-0 md:mt-0  mt-4 mx-2 text-black ">About Us</a>
     <a href="/services" className="  nav-item block md:inline-block  ml-5 md:ml-0 md:mt-0 mt-4 mx-2 text-black ">Services</a>
+    
    
   </div>
 
-  <button className="login-img ml-3  md:ml-20 mr-20 md:mb-3 mb-5 ">Log In</button>
-   
+  <button className="login-img ml-3 md:ml-20 mr-20 md:mb-3 mb-5 " onClick={() => loginWithRedirect()}>Log In</button>
 </div>
         
          

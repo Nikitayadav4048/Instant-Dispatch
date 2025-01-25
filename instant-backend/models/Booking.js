@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
+const generateId = require('../utils/generateId');
 
 const BookingSchema = new mongoose.Schema({
-    name: { type: String, required: true },
+    name: { type: String, required: true , default: generateId },
     contact: { type: Number, required: true },
     pickupAddress: { type: String, required: true },
     deliveryAddress: { type: String, required: true },
@@ -10,7 +11,8 @@ const BookingSchema = new mongoose.Schema({
     pickupTime: { type: Date, required: true },
     deliveryTime: { type: Date, required: true },
     vehicle: { type: String, required: true, enum: ['scooter', 'bike', 'miniTruck'] },
-    price: { type: Number, required: true }
+    price: { type: Number, required: true },
+    status: {type: String , default: 'Pending'}
 });
 
 module.exports = mongoose.model('Booking', BookingSchema);

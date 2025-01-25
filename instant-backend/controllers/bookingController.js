@@ -34,11 +34,12 @@
 // };
 
 const Booking = require('../models/Booking.js');
-
+const generateId = require('../utils/generateId');
 // Create a booking
 exports.createBooking = async (req, res) => {
     const { name, contact, pickupAddress, deliveryAddress, parcelDescription, weight, pickupTime, deliveryTime, vehicle, price } = req.body;
     const newBooking = new Booking({
+        _id: generateId() , 
         name,
         contact,
         pickupAddress,
@@ -48,7 +49,8 @@ exports.createBooking = async (req, res) => {
         pickupTime,
         deliveryTime,
         vehicle,
-        price
+        price,
+        status: "Pending"
     });
     try {
         const savedBooking = await newBooking.save();

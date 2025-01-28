@@ -4,16 +4,36 @@ import logo from '../../assets/logo-final.png';
 import { useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 
+import { useEffect } from "react";
+
 const RiderNav = () => {
+  
   const [isOpen, setIsOpen] = useState(false);
   const { logout } = useAuth0();
   const { user, isAuthenticated } = useAuth0();
   const [userclick, setUserClick] = useState(false);
 console.log(user);
 const userRole = user['https://instant-dispatch.com/role'];
-console.log(userRole);
+// console.log(userRole);
+
+
+const [role, setRole] = useState("");
+
+useEffect(() => {
+  if (isAuthenticated && user) {
+
+    // Fetch user data from your backend
+    fetch(`http://localhost:5000/api/users/${user.email}`)
+      .then(response => response.json())
+      .then(data => setRole(data.username))
+      .catch(err => console.error("Error fetching user role:", err));
+  }
+
+}, [isAuthenticated, user]);
 
   return (
+
+   
    <>
       <nav className="main-div">
      
@@ -51,9 +71,12 @@ console.log(userRole);
 {userclick && (
    <div className="userDetails  flex flex-col items-center h-40">
      <p className="my-3">Welcome</p> 
-     <h4 >{user?.name}</h4>
-     <h4 >{user.email}</h4>
-    <p>{userRole}</p>
+   <div className=" flex flex-col items-start mb-2">
+   <h3>{role}</h3>
+   <h4 >{user.email}</h4>
+    </div> 
+     
+   
       <button className="login-img ml-3 md:ml-20 mr-20 md:mb-3 mt-12"
        onClick={() => logout({ returnTo: window.location.origin })}> Log Out </button>
        </div>

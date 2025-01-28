@@ -63,6 +63,7 @@ const About = () => {
         .then(data => setRole(data.role))
         .catch(err => console.error("Error fetching user role:", err));
     }
+    
   }, [isAuthenticated, user]);
   return (
     <>

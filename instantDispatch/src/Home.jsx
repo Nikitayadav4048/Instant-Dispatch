@@ -93,7 +93,12 @@ const Home = () => {
       } catch (err) {
         console.error("Error fetching user role:", err);
       }
+        
     };
+
+
+
+    
 
     fetchUserRole();
   }, [isAuthenticated, user]);
@@ -119,16 +124,16 @@ const Home = () => {
   return (
     <div>
       {isAuthenticated ? (
-        role === 'rider' ? <RiderNav /> : <CustomerNav />
+        role === 'rider' ? <RiderNav/> : <CustomerNav/>
       ) : (
-        <Navbar />
+        <Navbar/>
       )}
-      <Maincontainer />
-      <Chooseus />
-      <Process />
-      <Safety />
-      <Business />
-      <Footer />
+      <Maincontainer/>
+      <Chooseus/>
+      <Process/>
+      <Safety/>
+      <Business/>
+      <Footer/>
     </div>
   );
 };

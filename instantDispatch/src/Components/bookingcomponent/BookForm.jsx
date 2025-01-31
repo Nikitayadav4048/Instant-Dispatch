@@ -1,9 +1,12 @@
 /* eslint-disable no-unused-vars */
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import "./Form.css"
+import "./Form.css";
+import { useDispatch } from 'react-redux';
+import { addNotification } from '../redux/notificationSlice';
 
 const BookForm = () => {
+  const dispatch = useDispatch();
   const [formData, setFormData] = useState({
     name: '',
     contact: '',
@@ -19,11 +22,12 @@ const BookForm = () => {
   const [suggestions, setSuggestions] = useState([]);
   const [isPickup, setIsPickup] = useState(true);
   const [errors, setErrors] = useState({ pickupAddress: '', deliveryAddress: '' });
+  const [distance, setDistance] = useState(null);
 
   const vehiclePrices = {
-    scooter: 50,
-    bike: 75,
-    miniTruck: 150,
+    bike: 10,
+    scooter: 30,
+    miniTruck: 50,
   };
 
   const handleChange = (e) => {
@@ -31,7 +35,6 @@ const BookForm = () => {
     setFormData({
       ...formData,
       [name]: value,
-      price: name === 'vehicle' ? vehiclePrices[value] : formData.price,
     });
 
     if (name === 'pickupAddress' || name === 'deliveryAddress') {
@@ -41,7 +44,7 @@ const BookForm = () => {
   };
 
   const fetchSuggestions = async (query) => {
-    const apiKey = 'c5c10219015646ac9d9f7ff68df4cd2a'; 
+    const apiKey = '33d227969fe34f1dad9c219cd7b53b6c'; 
     const response = await axios.get(`https://api.opencagedata.com/geocode/v1/json?q=${query}&key=${apiKey}&countrycode=IN&bounds=21.0396,74.1699|26.8826,82.1555`);
     const data = await response.data;
     if (data.results) {
@@ -50,17 +53,18 @@ const BookForm = () => {
   };
 
   const validateAddress = async (address, type) => {
-    const apiKey = 'c5c10219015646ac9d9f7ff68df4cd2a';
+    const apiKey = '33d227969fe34f1dad9c219cd7b53b6c';
     const response = await axios.get(`https://api.opencagedata.com/geocode/v1/json?q=${address}&key=${apiKey}`);
     const data = await response.data;
     if (data.results.length > 0) {
       setErrors((prev) => ({ ...prev, [type]: '' }));
       console.log(`${type} is a valid location`);
-      return true;
+      const { lat, lng } = data.results[0].geometry;
+      return { lat, lon: lng };
     } else {
       setErrors((prev) => ({ ...prev, [type]: `${type} is not a valid location!!` }));
       console.log(`${type} is not a valid location!!`);
-      return false;
+      return null;
     }
   };
 
@@ -72,21 +76,53 @@ const BookForm = () => {
     setSuggestions([]);
   };
 
+  const haversine = (lon1, lat1, lon2, lat2) => {
+    const R = 6371; // Radius of the Earth in kilometers
+    const dLat = (lat2 - lat1) * (Math.PI / 180);
+    const dLon = (lon2 - lon1) * (Math.PI / 180);
+    const a =
+      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.cos(lat1 * (Math.PI / 180)) * Math.cos(lat2 * (Math.PI / 180)) *
+      Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    const distance = R * c;
+    return distance;
+  };
+
+  const calculateTotalPrice = (vehicle, distance) => {
+    const rate = vehiclePrices[vehicle];
+    return Math.floor(rate * distance);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const isPickupValid = await validateAddress(formData.pickupAddress, 'pickupAddress');
-    const isDeliveryValid = await validateAddress(formData.deliveryAddress, 'deliveryAddress');
+    const pickupCoords = await validateAddress(formData.pickupAddress, 'pickupAddress');
+    const deliveryCoords = await validateAddress(formData.deliveryAddress, 'deliveryAddress');
 
-    if (isPickupValid && isDeliveryValid) {
-      // console.log('Booking Details:', formData);
+    if (pickupCoords && deliveryCoords) {
+      const dist = haversine(pickupCoords.lon, pickupCoords.lat, deliveryCoords.lon, deliveryCoords.lat);
+      setDistance(dist);
+      console.log(`Distance: ${dist.toFixed(2)} km`);
+
+      const totalPrice = calculateTotalPrice(formData.vehicle, dist);
+      setFormData((prevFormData) => ({ ...prevFormData, price: totalPrice }));
+      console.log(`Total Price: ${totalPrice}`);
+
       try {
-         const response = await axios.post('http://localhost:4000/api/book', formData);
-          console.log('Booking successful:', response.data);
-         }
-          catch (err) { 
-            console.error('Error creating booking:', err);
-           }
+        const response = await axios.post('http://localhost:4000/api/book', formData);
+        console.log('Booking successful:', response.data);
+        const newNotification = {
+          id: Date.now(),
+          message: 'Your rider is successfully booked',
+          timestamp: new Date().toLocaleString() // Adds the current time
+        };
+        
+    // Dispatch action to add notification
+    dispatch(addNotification(newNotification));
+      } catch (err) {
+        console.error('Error creating booking:', err);
+      }
     } else {
       console.log('One or both addresses are invalid. Please correct them.');
     }
@@ -103,14 +139,14 @@ const BookForm = () => {
       document.removeEventListener('click', handleClick);
     };
   }, []);
+  
 
   return (
-    <div className="booking-form-container mt-36 mb-36 ">
+    <div className="booking-form-container mt-36 mb-36">
       <h1 className="booking-heading">Book a Rider</h1>
      
       <form onSubmit={handleSubmit} className="booking-form flex flex-col">
-      <p className="mb-2 text-2xl">Personal Details</p>
-    
+        <p className="mb-2 text-2xl">Personal Details</p>
        
         <input
           type="text"
@@ -120,7 +156,6 @@ const BookForm = () => {
           placeholder="Your Name"
           required
           autoComplete="off"
-         
         />
         <input
           type="text"
@@ -130,7 +165,6 @@ const BookForm = () => {
           placeholder="Contact Information"
           required
           autoComplete="off"
-       
         />
         <input
           type="text"
@@ -140,10 +174,9 @@ const BookForm = () => {
           placeholder="Pickup Address"
           required
           autoComplete="off"
-         
           id={errors.pickupAddress ? 'error-border' : ''}
         />
-        {errors.pickupAddress && <p className="error-text  text-red-800  pb-3 ps-1 ">{errors.pickupAddress}</p>}
+        {errors.pickupAddress && <p className="error-text text-red-800 pb-3 ps-1">{errors.pickupAddress}</p>}
         {isPickup && suggestions.length > 0 && (
           <ul className="suggestions-list-pickup">
             {suggestions.map((suggestion, index) => (
@@ -161,10 +194,9 @@ const BookForm = () => {
           placeholder="Delivery Address"
           required
           autoComplete="off"
-         
           id={errors.deliveryAddress ? 'error-border' : ''}
         />
-        {errors.deliveryAddress && <p className="error-text   text-red-800  pb-3 ps-1 ">{errors.deliveryAddress}</p>}
+        {errors.deliveryAddress && <p className="error-text text-red-800 pb-3 ps-1">{errors.deliveryAddress}</p>}
         {!isPickup && suggestions.length > 0 && (
           <ul className="suggestions-list-delivery">
             {suggestions.map((suggestion, index) => (
@@ -183,7 +215,6 @@ const BookForm = () => {
           placeholder="Parcel Description"
           required
           autoComplete="off"
-        
         />
         <input
           type="text"
@@ -193,10 +224,9 @@ const BookForm = () => {
           placeholder="Weight"
           required
           autoComplete="off"
-         
         />
         <p className="mb-2 text-2xl">Vehicle Selection</p>
-        <div className="vehicle-options flex justify-around mb-4 ">
+        <div className="vehicle-options flex justify-around mb-4">
           <label>
             <input
               type="radio"
@@ -204,7 +234,6 @@ const BookForm = () => {
               value="scooter"
               onChange={handleChange}
               required
-            
             />
             <i className="fas fa-motorcycle"></i>
           </label>
@@ -215,7 +244,6 @@ const BookForm = () => {
               value="bike"
               onChange={handleChange}
               required
-              
             />
             <i className="fas fa-bicycle"></i>
           </label>
@@ -226,7 +254,6 @@ const BookForm = () => {
               value="miniTruck"
               onChange={handleChange}
               required
-              
             />
             <i className="fas fa-truck"></i>
           </label>
@@ -238,7 +265,6 @@ const BookForm = () => {
           value={formData.pickupTime}
           onChange={handleChange}
           required
-         
         />
         <input
           type="datetime-local"
@@ -246,17 +272,21 @@ const BookForm = () => {
           value={formData.deliveryTime}
           onChange={handleChange}
           required
-         
         />
-        <div className="price-display my-4 text-center">
-          <h3>Total Price: ${formData.price}</h3>
-        </div>
-        <button type="submit" className="booking-button text-dark">Confirm Booking</button>
-        
-      </form>
-     
-    </div>
-  );
+<div className="price-display my-4 text-center">
+<h3>Total Price: ₹{formData.price}</h3>
+</div>
+{distance !== null && (
+<div className="distance-display my-4 text-center">
+  <h3>Distance: {distance.toFixed(2)} km</h3>
+</div>
+)}
+<button type="submit" className="booking-button text-dark">Confirm Booking</button>
+
+    </form>
+   
+</div>
+);
 };
 
 export default BookForm;

@@ -482,14 +482,14 @@
 
 // export default OrderDetails;
 
-
-import  { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { IoMdArrowBack } from 'react-icons/io';
 import { MdLocationOn, MdPhone, MdPayment, MdDateRange, MdPerson } from 'react-icons/md';
 import { AiFillFileText, AiFillCar } from 'react-icons/ai';
 import { handleBack, handleComplete, handleAccept, handleReject, fetchBookingById } from '../redux/ordersSlice';
+import { addNotification } from '../redux/notificationSlice'; // Import addNotification action
 
 const OrderDetails = () => {
   const dispatch = useDispatch();
@@ -513,16 +513,34 @@ const OrderDetails = () => {
   const handleAcceptOrder = () => {
     dispatch(handleAccept(order._id));
     setIsAccepted(true);
+    // Send notification
+    dispatch(addNotification({
+      id: Date.now(),
+      message: 'Your order is accepted by the rider',
+      timestamp: new Date().toLocaleString()
+    }));
   };
 
   const handleCompleteOrder = () => {
     dispatch(handleComplete(order._id));
     dispatch(handleBack()); // Navigate back to the list page
+    // Send notification
+    dispatch(addNotification({
+      id: Date.now(),
+      message: 'Your order is completed',
+      timestamp: new Date().toLocaleString()
+    }));
   };
 
   const handleRejectOrder = () => {
     dispatch(handleReject(order._id));
     dispatch(handleBack()); // Navigate back to the list page
+    // Send notification
+    dispatch(addNotification({
+      id: Date.now(),
+      message: 'Your order is rejected',
+      timestamp: new Date().toLocaleString()
+    }));
   };
 
   return (
@@ -569,11 +587,6 @@ const OrderDetails = () => {
 
         {/* Dates */}
         <div className="grid grid-cols-2 gap-4 mb-6">
-          <div className="p-4 border border-gray-200 rounded-lg bg-[#F8F5F3]">
-            <h2 className="text-lg font-semibold text-gray-800 mb-3">Date Info</h2>
-            <p className="text-gray-700 mb-2"><MdDateRange className="inline-block mr-2 text-xl text-gray-600" /><span className="font-medium">Order Date:</span> {new Date(order.pickupTime).toLocaleDateString()}</p>
-          </div>
-
           <div className="p-4 border border-gray-200 rounded-lg bg-[#F8F5F3]">
             <h2 className="text-lg font-semibold text-gray-800 mb-3">Delivery Info</h2>
             <p className="text-gray-700 mb-2"><MdDateRange className="inline-block mr-2 text-xl text-gray-600" /><span className="font-medium">Delivery Date:</span> {new Date(order.deliveryTime).toLocaleDateString()}</p>

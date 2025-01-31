@@ -152,6 +152,7 @@ import { useNavigate } from 'react-router-dom';
 import './RiderForm.css';
 import { useAuth0 } from "@auth0/auth0-react";
 
+
 const RiderForm = () => {
   const [vehicleType, setVehicleType] = useState('');
   const [hasLicense, setHasLicense] = useState(false);
@@ -188,8 +189,11 @@ const RiderForm = () => {
           headers: {
             'Content-Type': 'application/json',
           },
+          
           body: JSON.stringify({ email: user.email }),
+
         });
+
       } catch (error) {
         console.error('Error updating form completion:', error);
       }

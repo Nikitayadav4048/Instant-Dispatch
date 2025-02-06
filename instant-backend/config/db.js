@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 
 const connectDB = async () => {
     try {
-        await mongoose.connect("mongodb+srv://Nikita:instant@cluster0.kzwf8.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0");
-        console.log('MongoDB connected');
+        await mongoose.connect("mongodb+srv://Nikita:instant@cluster0.kzwf8.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0" );
+        console.log('MongoDB connected'); 
     } catch (err) {
         console.error(err.message);
         process.exit(1);

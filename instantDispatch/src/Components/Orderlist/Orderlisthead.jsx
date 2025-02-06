@@ -194,7 +194,7 @@ import React, { useEffect } from 'react';
 import './orderlisthead.css';
 import Footer from '../homecomponent/Footer';
 import Dashboard from './Dashboard';
-import OrderDetails from './OrderDetails';
+import OrderDetails from './Orderdetails';
 import { useSelector, useDispatch } from 'react-redux';
 import { handleDetails, handleBack, handleComplete, handleAccept, handleFilter, fetchBookings } from '../redux/ordersSlice';
 import CustomerNav from '../NavbarComponents/CustomerNav';

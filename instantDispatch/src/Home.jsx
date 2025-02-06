@@ -97,9 +97,6 @@ const Home = () => {
     };
 
 
-
-    
-
     fetchUserRole();
   }, [isAuthenticated, user]);
 

@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 
 
 
@@ -190,14 +191,14 @@
 
 // export default Orderlisthead;
 
-import React, { useEffect } from 'react';
+import  { useEffect } from 'react';
 import './orderlisthead.css';
-import Footer from '../homecomponent/Footer';
+
 import Dashboard from './Dashboard';
 import OrderDetails from './Orderdetails';
 import { useSelector, useDispatch } from 'react-redux';
-import { handleDetails, handleBack, handleComplete, handleAccept, handleFilter, fetchBookings } from '../redux/ordersSlice';
-import CustomerNav from '../NavbarComponents/CustomerNav';
+import { handleDetails, handleComplete, handleAccept, handleFilter, fetchBookings } from '../redux/ordersSlice';
+import { addNotification } from '../redux/notificationSlice'; // Import addNotification action
 
 const Orderlisthead = () => {
   const dispatch = useDispatch();
@@ -211,9 +212,19 @@ const Orderlisthead = () => {
     return <div>Loading...</div>;
   }
 
+  const acceptOrder = (orderId) => {
+    dispatch(handleAccept(orderId));
+    
+    const newNotification = {
+      id: Date.now(),
+      message: 'Your order is accepted by the rider',
+      timestamp: new Date().toLocaleString()
+    };
+    dispatch(addNotification(newNotification));
+  };
+
   return (
     <>
-      {!selectedOrder && <CustomerNav />}
       {selectedOrder ? (
         <OrderDetails />
       ) : (
@@ -255,22 +266,27 @@ const Orderlisthead = () => {
                           <button onClick={() => dispatch(handleComplete(item._id))} className="btn-color hover:bg-orange-500 font-bold py-1 px-2 rounded border-none">
                             Complete
                           </button>
+
                           <button onClick={() => dispatch(handleDetails(item))} className="btn-color hover:bg-orange-500 font-bold py-1 px-2 rounded border-none ml-2">
                             Details
                           </button>
+
                         </>
                       ) : item.status === 'Delivered' ? (
                         <button disabled className="btn-color font-bold py-1 px-2 rounded border-none">
                           Completed
                         </button>
+
                       ) : (
                         <>
                           <button onClick={() => dispatch(handleDetails(item))} className="btn-color hover:bg-orange-500 font-bold py-1 px-2 rounded border-none">
                             Details
                           </button>
-                          <button onClick={() => dispatch(handleAccept(item._id))} className="bg-black hover:bg-black text-white font-bold py-1 px-2 rounded ml-2 border-none">
+
+                          <button onClick={() => acceptOrder(item._id)} className="bg-black hover:bg-black text-white font-bold py-1 px-2 rounded ml-2 border-none">
                             Accept
                           </button>
+                              
                         </>
                       )}
                     </td>
@@ -281,7 +297,6 @@ const Orderlisthead = () => {
           </div>
         </>
       )}
-      {!selectedOrder && <Footer />}
     </>
   );
 };

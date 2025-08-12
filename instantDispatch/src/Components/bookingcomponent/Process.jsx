@@ -17,8 +17,7 @@ const Process = () => {
             <p className='text-3xl '>Book a Rider</p>
            
            <p className='w-60 text-lg'>Start by our booking page and 
-           filling out the necessary details.</p>
-           
+           filling out the necessary details.</p>           
          </div>
          <div className="step flex flex-col justify-center items-center gap-3 p-6">
          <div className="img-box bg-blue-50">
@@ -44,5 +43,4 @@ const Process = () => {
      </>
   )
 }
-
 export default Process

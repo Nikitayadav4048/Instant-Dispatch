@@ -1,5 +1,6 @@
 import "./footer.css"
 import logo from '../../assets/logo-final.png';
+import {Link , NavLink } from "react-router-dom";
 const Footer = () => {
   return (
     <div className="footer w-full pb-10 pt-6  mt-20">
@@ -15,19 +16,19 @@ const Footer = () => {
    that your deliveries are always on time and handled with the
     utmost care.</p>
     <ul className="social-icons flex flex-wrap gap-3  mt-4 ">
-        <li><a href="#"><i className="fab fa-facebook-f"></i></a></li>
-        <li><a href="#"><i className="fab fa-twitter"></i></a></li>
-        <li><a href="#"><i className="fab fa-instagram"></i></a></li>
-        <li><a href="#"><i className="fab fa-linkedin-in"></i></a></li>
+        <li><a href="#"><i className="fab fa-facebook-f item"></i></a></li>
+        <li><a href="#"><i className="fab fa-twitter item"></i></a></li>
+        <li><a href="#"><i className="fab fa-instagram item"></i></a></li>
+        <li><a href="#"><i className="fab fa-linkedin-in item"></i></a></li>
     </ul>
 </div>
 <div className="part2 flex flex-wrap justify-center gap-28 pt-20">
 
 <ul className="footer-list">
-<li><a href="#"></a>Home</li>
-      <li><a href="#"></a>About us</li>
-      <li><a href="#"></a>Services</li>
-      <li><a href="#"></a>Contact us</li>
+<li><Link to = "/">Home</Link></li>
+      <li><NavLink to="/about">About us</NavLink></li>
+      <li><NavLink to="/services">Services</NavLink></li>
+      <li><NavLink to="">Contact us</NavLink></li>
   </ul>
 
   <ul className="footer-list">

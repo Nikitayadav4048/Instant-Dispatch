@@ -1,0 +1,16 @@
+*{
+    margin: 0%;
+    padding: 0%;
+}
+.view-btn{
+    background-color: #F8AD42; 
+    color: black;
+    border: none;
+}
+.dashbord{
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+.dashcolor{
+    background-color: #F8F5F3;
+}

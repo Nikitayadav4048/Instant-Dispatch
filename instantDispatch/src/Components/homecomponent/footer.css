@@ -15,7 +15,9 @@
  .footer-list{
     list-style: none;
     line-height: 33px;
+   
  }
+ 
  .social-icons {
     list-style-type: none;
     padding-left: 0;
@@ -41,5 +43,10 @@
       margin-left: 20px;
       margin-right: 20px;
    }
-  
+ }
+
+ .item{
+   text-decoration: none;
+   list-style: none;
+   color: #000000;
  }

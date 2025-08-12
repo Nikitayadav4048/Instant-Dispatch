@@ -1,99 +1,112 @@
-// import React, { useEffect } from 'react';
-// import { useDispatch } from 'react-redux';
-// import { fetchBookings } from './Components/redux/ordersSlice';
-// import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-// import Orderlisthead from "./Components/Orderlist/Orderlisthead";
+// import Book from "./Book";
+// import About from "./About";
+// import Career from "./Career";
+// import {createBrowserRouter, RouterProvider} from "react-router-dom"
+// import Servicespage from "./Servicespage";
+// import Home from "./home";
+
+// import OrderDetails from "./Components/Orderlist/OrderDetails";
+// import Orderpage from "./Orderpage";
 
 // const router = createBrowserRouter([
 //   {
-//     path: "/order",
-//     element: <Orderlisthead />
+//     path:"/",
+//     element:<Home/>
+//   },
+//   {
+//     path:"/about",
+//     element:<About/>
+//   },
+//   {
+//     path:"/career",
+//     element:<Career/>
+//   },
+//   {
+//     path:"/book",
+//     element:<Book/>
+//   },
+//   {
+//     path:"/services",
+//     element:<Servicespage/>
+//   },
+//   {
+//     path:"/order",
+//     element:<Orderpage/>
+//   },
+//   {
+//     path:"/order:id",
+//     element:<OrderDetails/>
 //   }
 // ]);
 
 // export default function App() {
-//   const dispatch = useDispatch();
-
-//   useEffect(() => {
-//     dispatch(fetchBookings());
-//   }, [dispatch]);
-
-//   return <RouterProvider router={router} />;
+//   return <RouterProvider router={router} />  
 // }
 
-// import React, { useEffect } from 'react';
-// import { useDispatch } from 'react-redux';
-// import { fetchBookings } from './Components/redux/ordersSlice';
-// import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-// import Orderlisthead from "./Components/Orderlist/Orderlisthead";
 
-// const router = createBrowserRouter([
-//   {
-//     path: "/order",
-//     element: <Orderlisthead />
-//   }
-// ]);
 
-// export default function App() {
-//   const dispatch = useDispatch();
+import Book from "./Book";
+import About from "./About";
+import Career from "./Career";
+import {createBrowserRouter, RouterProvider} from "react-router-dom"
+import Servicespage from "./Servicespage";
+import Home from "./Home";
 
-//   useEffect(() => {
-//     dispatch(fetchBookings());
-//   }, [dispatch]);
-
-//   return <RouterProvider router={router} />;
-// }
-
-import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { fetchBookings } from './Components/redux/ordersSlice';
-import { createBrowserRouter, RouterProvider, Route } from 'react-router-dom';
-import Orderlisthead from "./Components/Orderlist/Orderlisthead";
-// import Aboutus from "./Components/aboutcomponent/Aboutus"
-import Servicepage from "./Servicespage"
-import Home from "./Home"
-import About from "./About"
-import OrderDetails from "./Components/Orderlist/OrderDetails";
-import Book from './Book';
-import Career from './Career';
+import OrderDetails from "./Components/Orderlist/Orderdetails";
+import Orderpage from "./Orderpage";
+import RiderForm from "./Components/NavbarComponents/RiderForm";
+import UserSignup from "./Components/NavbarComponents/UserSignup";
+import UserLogin from "./Components/NavbarComponents/UserLogin";
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <Home/>
+    path:"/",
+    element:<Home/>
   },
   {
-    path: "/about",
-    element: <About/>
+    path:"/about",
+    element:<About/>
   },
   {
-    path: "/services",
-    element: <Servicepage/>
+    path:"/career",
+    element:<Career/>
   },
   {
-    path: "/Book",
-    element: <Book/>
+    path:"/book",
+    element:<Book/>
   },
   {
-    path: "/career",
-    element: <Career/>
+    path:"/services",
+    element:<Servicespage/>
   },
   {
-    path: "/order",
-    element: <Orderlisthead />
+    path:"/order",
+    element:<Orderpage/>
   },
   {
-    path: "/order/:id",
-    element: <OrderDetails />
-  }
+    path:"/order:id",
+    element:<OrderDetails/>
+  },
+  {
+    path:"/rider-form",
+    element:<RiderForm/>
+  },
+  {
+    path:"/signup",
+    element:<UserSignup/>
+  },
+  {
+    path:"/login",
+    element:<UserLogin/>
+  },
+ 
+  
 ]);
 
 export default function App() {
-  const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(fetchBookings());
-  }, [dispatch]);
-
-  return <RouterProvider router={router} />;
+  
+  return <RouterProvider router={router} />  
 }
+
+

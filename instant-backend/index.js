@@ -1,3 +1,5 @@
+
+
 const express = require('express');
 const cors = require('cors');
 const connectDB = require('./config/db');
@@ -5,7 +7,7 @@ const bookingRoutes = require('./routes/bookingRoutes');
 require('dotenv').config();
 
 const app = express();
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 4000;
 
 // Middleware
 app.use(express.json()); // replaces bodyParser.json()
@@ -18,6 +20,7 @@ connectDB();
 
 // Routes
 app.use('/api', bookingRoutes);
+
 
 // Start the server
 app.listen(port, () => {

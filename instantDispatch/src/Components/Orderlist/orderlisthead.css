@@ -22,7 +22,7 @@
 .orderlistheader {
     /* margin-top: 45px;
     margin-bottom: 99px; */
-    background-image: url('../../assets/order-bg2.jpg');
+    background-image: url('../../assets/map-img.png');
     /* height: 30%; */
      /* Path to your image */ background-size: cover; /* Ensures the image covers the whole area */ 
      background-repeat: no-repeat; /* Prevents the image from repeating */ 

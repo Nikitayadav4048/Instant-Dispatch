@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable react/no-unescaped-entities */
 
 // import './dashbord.css';
 // import { useDispatch } from 'react-redux';

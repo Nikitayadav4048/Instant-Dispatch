@@ -1,3 +1,4 @@
+
 .booking-form-container {
   max-width: 600px;
   margin: auto;
@@ -18,7 +19,7 @@
   
   .booking-form h2 {
     margin-top: 20px;
-    font-size: 1.5rem;
+    font-size: 2.5rem;
   }
 
   .booking-form input,
@@ -27,37 +28,56 @@
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    
+    width: 550px ; 
   }
 
   .booking-form textarea {
     resize: vertical;
   }
-  
-  
-  
-  .vehicle-options label {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    cursor: pointer;
-  }
 
-  .vehicle-options i {
-    font-size: 2rem;
-    margin-top: 5px;
-  }
-  
+ .vehicle-options {
+  display: flex;
+  /* justify-content: space-between; */
+  gap: 14%;
+  margin-bottom: 1rem;
+  padding: 0 8px;
+}
+
+.vehicle-options label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  padding: 6px 8px;
+  border-radius: 6px;
+  transition: background 0.3s ease;
+}
+
+.vehicle-options input[type='radio'] {
+  display: none;
+}
+
+.vehicle-options i {
+  font-size: 1.8rem;
+  color: #444;
+  transition: color 0.3s ease;
+}
+
+.vehicle-options input[type='radio']:checked + i {
+  color: #F8AD42;
+}
+
   
   .booking-button{
     background-color: #F8AD42;
     font-size: 15px;
-    padding: 10px;
+    padding: 15px;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-  }
+}
   
   .booking-button:hover {
     background-color: #e9a038;
@@ -109,4 +129,128 @@
 #error-border{
   border: 1px solid red;
 
+}
+
+
+/* ✅ Make form width fluid on smaller screens */
+@media screen and (max-width: 768px) {
+  .booking-form input,
+  .booking-form textarea {
+    width: 100%;
+  }
+
+  .vehicle-options {
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+  }
+
+  .vehicle-options label {
+    width: 30%;
+    min-width: 80px;
+  }
+
+  .suggestions-list-pickup,
+  .suggestions-list-dilevery {
+    width: 100%;
+    margin-top: 8px;
+    max-width: none;
+  }
+
+  .booking-form-container {
+    padding: 16px;
+    margin-top: 60px;
+  }
+
+  .booking-button {
+    width: 100%;
+  }
+}
+
+/* ✅ Fine-tune small mobile layout */
+@media screen and (max-width: 480px) {
+  .booking-heading {
+    font-size: 1.5rem;
+  }
+
+  .booking-form h2 {
+    font-size: 1.8rem;
+  }
+
+  .vehicle-options label {
+    width: 100%;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 10px;
+  }
+
+  .vehicle-options i {
+    font-size: 1.5rem;
+  }
+}
+ 
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  max-width: 400px;
+  width: 90%;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal-content h2 {
+  font-size: 1.8rem;
+  color: #4CAF50;
+  margin-bottom: 10px;
+}
+
+.modal-content p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+.modal-content button {
+  background-color: #F8AD42;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.modal-content button:hover {
+  background-color: #e9a038;
+}
+
+.modal-details {
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.modal-details p {
+  margin: 0.5rem 0;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
 }

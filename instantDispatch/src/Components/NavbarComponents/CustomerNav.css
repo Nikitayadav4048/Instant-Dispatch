@@ -1,96 +1,138 @@
-*{
+/* Reset */
+* {
   padding: 0;
-  margin:0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-
-.main-div{
-background-color: #F8AD42; 
-
+/* Navigation Bar */
+.main-div {
+  background-color: #F8AD42 !important;
 }
-.nav-brand{
-  
-  padding: 0px 0px; 
+
+.nav-brand {
   height: 55px;
-  width: 175px; 
+  width: 175px;
 }
-.container{
-padding: 0 !important;
+
+.container {
+  padding: 0 !important;
 }
-.nav-item{
-  text-decoration: none;
+
+/* Navigation Items */
+.nav-item {
+  text-decoration: none !important;
   font-size: 20px;
-  font-weight:500;
- 
+  font-weight: 500;
+  color: black;
 }
-.log-img{
-  
-height: 42px;
-width: 42px;
-display: flex;
-justify-content: center;
-align-items: center;
-background-color: rgb(0, 0, 0);
-color: white;
 
-
-border: none;
-border-radius: 50%;
-margin-top: 10px;
-
-cursor: pointer;
-padding: 5px;
-font-size: 16px;
-
+.nav-item:hover,
+.nav-item:focus {
+  text-decoration: none !important;
+  outline: none !important;
 }
-.notification-icon{
-  /* border: 2px solid black; */
+
+/* Icon Buttons */
+svg {
+  width: auto !important;
+  height: auto !important;
+  font-size: inherit !important;
+}
+
+.notification-icon {
   border-radius: 50%;
   margin-left: 10px;
 }
 
-.userDetails { position: absolute; 
-     top: 100px;
-     right: 20px;
-     background-color: white;
-     padding: 10px;
-     border: 1px solid #ccc;
-     border-radius: 8px;
-     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      z-index: 1000; 
-    }
-
-  .notification-sec{
-    position: absolute;
-    top: 100px;
-    right: 20px;
-    background-color: white;
-  
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-     z-index: 1000; 
-     width: 310px;
-     height: 400px;
-     overflow-y: scroll;
-  }  
-
-
-@media (min-width: 781px) and (max-width: 1039px) {
-     
-  .container { flex-direction: column; align-items: center; } 
-  .nav-item { font-size: 18px; margin: 10px 0; }
-   .login-img { margin-top: 15px; font-size: 14px; }
-    .sec2-img { height: 350px; width: 350px; }
-   
-}
-
-.delete-btn{
+.log-img {
+  height: 42px;
+  width: 42px;
   display: flex;
-  justify-content: end;
- 
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  margin-top: 10px;
+  cursor: pointer;
+  padding: 5px;
+  font-size: 16px;
 }
 
-.delete{
+/* User Dropdown */
+.userDetails {
+  position: absolute;
+  top: 100px;
+  right: 20px;
+  background-color: white;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  min-width: 200px;
+}
+
+/* Notification Section */
+.notification-sec {
+  position: absolute;
+  top: 100px;
+  right: 20px;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  width: 310px;
+  height: 400px;
+  overflow-y: scroll;
+}
+
+.notifications ul {
+  list-style: none;
+  padding: 0;
+}
+
+.notification-item {
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+}
+
+.delete-btn {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.delete {
   background-color: #fbba60;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Responsive Design */
+@media (min-width: 781px) and (max-width: 1039px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nav-item {
+    font-size: 18px;
+    margin: 10px 0;
+  }
+
+  .login-img {
+    margin-top: 15px;
+    font-size: 14px;
+  }
+
+  .sec2-img {
+    height: 350px;
+    width: 350px;
+  }
 }

@@ -9,30 +9,44 @@ const BookForm = () => {
 
   const [formData, setFormData] = useState({
     name: '',
+    email: '',
     contact: '',
     pickupAddress: '',
     deliveryAddress: '',
     parcelDescription: '',
     weight: '',
-    pickupTime: '',
-    deliveryTime: '',
     vehicle: '',
     price: 0,
+    paymentStatus: 'cod',
   });
+
+  // Auto-fill email from logged-in user
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    if (user.email) {
+      setFormData(prev => ({ ...prev, email: user.email }));
+    }
+  }, []);
 
   const [suggestions, setSuggestions] = useState([]);
   const [isPickup, setIsPickup] = useState(true);
   const [errors, setErrors] = useState({ pickupAddress: '', deliveryAddress: '' });
   const [liveDistance, setLiveDistance] = useState(null);
+  const [calculatedDistance, setCalculatedDistance] = useState(null);
   const [showConfirmation, setShowConfirmation] = useState(false);
-   const [finalDistance, setFinalDistance] = useState(null);
+  const [finalDistance, setFinalDistance] = useState(null);
   const [finalPrice, setFinalPrice] = useState(null);
 
-
   const vehiclePrices = {
-    bike: 10,
-    scooter: 30,
-    miniTruck: 50,
+    bike: 15,      // ₹15 per km
+    scooter: 25,   // ₹25 per km  
+    miniTruck: 40, // ₹40 per km
+  };
+
+  const minimumCharges = {
+    bike: 50,      // Minimum ₹50
+    scooter: 80,   // Minimum ₹80
+    miniTruck: 120, // Minimum ₹120
   };
 
   const handleChange = (e) => {
@@ -46,13 +60,21 @@ const BookForm = () => {
   };
 
   const fetchSuggestions = async (query) => {
-    if (!query) return;
+    if (!query || query.length < 3) {
+      setSuggestions([]);
+      return;
+    }
     const apiKey = 'a240b743e5574003a8ef34ccc7ce329c';
     try {
-      const res = await axios.get(`https://api.opencagedata.com/geocode/v1/json?q=${query}&key=${apiKey}&countrycode=IN&bounds=21.0396,74.1699|26.8826,82.1555`);
-      if (res.data.results) setSuggestions(res.data.results);
+      const res = await axios.get(`https://api.opencagedata.com/geocode/v1/json?q=${encodeURIComponent(query)} Madhya Pradesh India&key=${apiKey}&countrycode=IN&limit=5`);
+      if (res.data.results && res.data.results.length > 0) {
+        setSuggestions(res.data.results);
+      } else {
+        setSuggestions([]);
+      }
     } catch (err) {
       console.error('Error fetching suggestions:', err);
+      setSuggestions([]);
     }
   };
 
@@ -74,12 +96,20 @@ const BookForm = () => {
     }
   };
 
-  const handleSuggestionClick = (suggestion) => {
-    setFormData((prev) => ({
-      ...prev,
-      [isPickup ? 'pickupAddress' : 'deliveryAddress']: suggestion.formatted,
-    }));
+  const handleSuggestionClick = async (suggestion) => {
+    const fieldName = isPickup ? 'pickupAddress' : 'deliveryAddress';
+    const newFormData = {
+      ...formData,
+      [fieldName]: suggestion.formatted,
+    };
+    
+    setFormData(newFormData);
     setSuggestions([]);
+    
+    // Calculate distance if both addresses are selected
+    if (newFormData.pickupAddress && newFormData.deliveryAddress) {
+      await calculateLiveDistance(newFormData.pickupAddress, newFormData.deliveryAddress);
+    }
   };
 
   const haversine = (lon1, lat1, lon2, lat2) => {
@@ -94,8 +124,128 @@ const BookForm = () => {
     return R * c;
   };
 
+  const calculateLiveDistance = async (pickup, delivery) => {
+    try {
+      const pickupCoords = await validateAddress(pickup, 'pickupAddress');
+      const deliveryCoords = await validateAddress(delivery, 'deliveryAddress');
+      
+      if (pickupCoords && deliveryCoords) {
+        const distance = haversine(pickupCoords.lon, pickupCoords.lat, deliveryCoords.lon, deliveryCoords.lat);
+        setCalculatedDistance(distance);
+      }
+    } catch (error) {
+      console.error('Error calculating distance:', error);
+    }
+  };
+
+  const handlePayment = async (bookingData, totalPrice) => {
+    const options = {
+      key: 'rzp_test_1DP5mmOlF5G5ag', // Test key
+      amount: totalPrice * 100, // Amount in paise
+      currency: 'INR',
+      display_currency: 'INR',
+      display_amount: totalPrice * 100,
+      name: 'Instant Dispatch',
+      description: 'Delivery Service Payment',
+      config: {
+        display: {
+          language: 'en'
+        }
+      },
+      handler: async function (response) {
+        console.log('Payment successful:', response);
+        await completeBooking({ ...bookingData, paymentId: response.razorpay_payment_id, paymentStatus: 'paid' }, totalPrice);
+      },
+      prefill: {
+        name: formData.name,
+        email: formData.email,
+        contact: formData.contact
+      },
+      theme: {
+        color: '#F8AD42'
+      },
+      modal: {
+        ondismiss: function() {
+          console.log('Payment cancelled');
+        }
+      }
+    };
+
+    if (window.Razorpay) {
+      const rzp = new window.Razorpay(options);
+      rzp.open();
+    } else {
+      // Fallback to mock payment if Razorpay not loaded
+      alert('Processing payment... (Demo mode)');
+      setTimeout(async () => {
+        const mockPaymentId = 'pay_' + Date.now();
+        await completeBooking({ ...bookingData, paymentId: mockPaymentId, paymentStatus: 'paid' }, totalPrice);
+      }, 2000);
+    }
+  };
+
+  const completeBooking = async (bookingData, totalPrice) => {
+    try {
+      console.log('📤 Sending booking data:', bookingData);
+      const res = await axios.post('http://localhost:5000/api/bookings', bookingData);
+      console.log('✅ Booking successful:', res.data);
+
+      // Generate parcel ID
+      const parcelId = `PID${Date.now().toString().slice(-6)}`;
+      
+      // Add detailed notification to Redux
+      dispatch(addNotification({
+        id: Date.now(),
+        parcelId: parcelId,
+        message: `Booking confirmed! Parcel ID: ${parcelId}`,
+        details: {
+          customerName: formData.name,
+          contact: formData.contact,
+          pickup: formData.pickupAddress,
+          delivery: formData.deliveryAddress,
+          parcelDescription: formData.parcelDescription,
+          weight: formData.weight,
+          vehicle: formData.vehicle,
+          distance: finalDistance?.toFixed(2),
+          price: totalPrice,
+          paymentMethod: formData.paymentStatus
+        },
+        timestamp: new Date().toLocaleString(),
+        type: 'booking'
+      }));
+      
+      console.log('🔔 Notification added to Redux store');
+
+
+
+      setFormData({
+        name: '',
+        email: '',
+        contact: '',
+        pickupAddress: '',
+        deliveryAddress: '',
+        parcelDescription: '',
+        weight: '',
+        vehicle: '',
+        price: 0,
+        paymentStatus: 'cod',
+      });
+      setShowConfirmation(true);
+    } catch (err) {
+      console.error('❌ Booking failed:', err);
+      console.error('❌ Error response:', err.response?.data);
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    // Validate vehicle selection
+    if (!formData.vehicle) {
+      alert('Please select a vehicle type');
+      return;
+    }
+    
     const pickupCoords = await validateAddress(formData.pickupAddress, 'pickupAddress');
     const deliveryCoords = await validateAddress(formData.deliveryAddress, 'deliveryAddress');
     if (!pickupCoords || !deliveryCoords) return;
@@ -104,46 +254,35 @@ const BookForm = () => {
     setLiveDistance(distance);
     setFinalDistance(distance);
 
-
-    const totalPrice = Math.floor(vehiclePrices[formData.vehicle] * distance);
+    // Calculate price with minimum charge
+    const calculatedPrice = Math.floor(vehiclePrices[formData.vehicle] * distance);
+    const minimumCharge = minimumCharges[formData.vehicle];
+    const totalPrice = Math.max(calculatedPrice, minimumCharge);
     setFinalPrice(totalPrice);
 
-
-    // const totalPrice = Math.floor(vehiclePrices[formData.vehicle] * distance);
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
     const bookingData = {
       ...formData,
       price: totalPrice,
       contact: Number(formData.contact),
-      pickupTime: new Date(formData.pickupTime),
-      deliveryTime: new Date(formData.deliveryTime),
+      customerUsername: formData.email || user.email || 'Unknown User',
+      customerEmail: formData.email,
     };
 
-    try {
-      const res = await axios.post('http://localhost:5000/api/book', bookingData);
-      console.log('✅ Booking successful:', res.data);
-
-      dispatch(addNotification({
-        id: Date.now(),
-        message: `Booking confirmed for ${formData.name}`,
-        timestamp: new Date().toLocaleString()
-      }));
-
-      setFormData({
-        name: '',
-        contact: '',
-        pickupAddress: '',
-        deliveryAddress: '',
-        parcelDescription: '',
-        weight: '',
-        pickupTime: '',
-        deliveryTime: '',
-        vehicle: '',
-        price: 0,
-      });
-      // setLiveDistance(null);
-      setShowConfirmation(true);
-    } catch (err) {
-      console.error('❌ Booking failed:', err);
+    // Check payment method
+    if (formData.paymentStatus === 'online') {
+      // Load Razorpay script if not loaded
+      if (!window.Razorpay) {
+        const script = document.createElement('script');
+        script.src = 'https://checkout.razorpay.com/v1/checkout.js';
+        script.onload = () => handlePayment(bookingData, totalPrice);
+        document.body.appendChild(script);
+      } else {
+        handlePayment(bookingData, totalPrice);
+      }
+    } else {
+      // COD or UPI - complete booking directly
+      await completeBooking(bookingData, totalPrice);
     }
   };
 
@@ -157,15 +296,14 @@ const BookForm = () => {
     <div className="booking-form-container">
       <h1 className="booking-heading">Book a Rider</h1>
 
-        {showConfirmation && (
+      {showConfirmation && (
         <div className="modal-overlay">
           <div className="modal-content">
             <h2>✅ Booking Confirmed!</h2>
-            <p>Your booking for <strong>{formData.name || 'the rider'}</strong> is successfully placed.</p>
+            <p>Your booking has been successfully placed.</p>
 
-            {finalDistance !== null && finalPrice !== null && (
+            {finalPrice !== null && (
               <div className="modal-details">
-                <p><strong>Distance:</strong> {finalDistance.toFixed(2)} km</p>
                 <p><strong>Total Price:</strong> ₹{finalPrice}</p>
               </div>
             )}
@@ -181,35 +319,41 @@ const BookForm = () => {
       )}
 
       <form onSubmit={handleSubmit} className="booking-form">
-        <p className="text-2xl p-2">Personal Details</p>
         <input name="name" placeholder="Your Name" value={formData.name} onChange={handleChange} required />
+        <input name="email" type="email" placeholder="Your Email" value={formData.email} onChange={handleChange} required />
         <input name="contact" placeholder="Contact Number" value={formData.contact} onChange={handleChange} required />
-
+        
         <input name="pickupAddress" placeholder="Pickup Address" value={formData.pickupAddress} onChange={handleChange} required className={errors.pickupAddress ? 'error-border' : ''} />
         {errors.pickupAddress && <p className="error-text">{errors.pickupAddress}</p>}
         {isPickup && suggestions.length > 0 && (
           <ul className="suggestions-list-pickup">
             {suggestions.map((s, i) => (
-              <li key={i} className="suggestion-item" onClick={() => handleSuggestionClick(s)}>{s.formatted}</li>
+              <li key={i} className="suggestion-item" onClick={(e) => {
+                e.stopPropagation();
+                handleSuggestionClick(s);
+              }}>{s.formatted}</li>
             ))}
           </ul>
         )}
 
+        
         <input name="deliveryAddress" placeholder="Delivery Address" value={formData.deliveryAddress} onChange={handleChange} required className={errors.deliveryAddress ? 'error-border' : ''} />
         {errors.deliveryAddress && <p className="error-text">{errors.deliveryAddress}</p>}
         {!isPickup && suggestions.length > 0 && (
           <ul className="suggestions-list-delivery">
             {suggestions.map((s, i) => (
-              <li key={i} className="suggestion-item" onClick={() => handleSuggestionClick(s)}>{s.formatted}</li>
+              <li key={i} className="suggestion-item" onClick={(e) => {
+                e.stopPropagation();
+                handleSuggestionClick(s);
+              }}>{s.formatted}</li>
             ))}
           </ul>
         )}
 
-        <p className='p-2 text-2xl'>Parcel Details</p>
+        
         <input name="parcelDescription" placeholder="Parcel Description" value={formData.parcelDescription} onChange={handleChange} required />
         <input name="weight" type="number" placeholder="Weight in kg" value={formData.weight} onChange={handleChange} required />
-
-        <p className='text-2xl p-2 pb-5'>Vehicle Selection</p>
+        
         <div className="vehicle-options">
           {[
             { value: 'bike', label: 'Bike', icon: 'fa-bicycle' },
@@ -217,32 +361,34 @@ const BookForm = () => {
             { value: 'miniTruck', label: 'Mini Truck', icon: 'fa-truck' }
           ].map(({ value, label, icon }) => (
             <label key={value} className={`vehicle-label ${formData.vehicle === value ? 'active' : ''}`}>
-              <input type="radio" name="vehicle" value={value} checked={formData.vehicle === value} onChange={handleChange} required />
+              <input type="radio" name="vehicle" value={value} checked={formData.vehicle === value} onChange={handleChange} />
               <i className={`fas ${icon}`}></i>
               <span>{label}</span>
             </label>
           ))}
         </div>
-
-         <p className='text-2xl p-2'>Timing</p>
-        <div className="timing-row">
-          <input type="datetime-local" name="pickupTime" value={formData.pickupTime} onChange={handleChange} required />
-          <input type="datetime-local" name="deliveryTime" value={formData.deliveryTime} onChange={handleChange} required />
-        </div>
-
-        {/* {liveDistance !== null && (
+        
+        {calculatedDistance && formData.vehicle && (
           <div className="distance-display">
-            <h3>Distance: {liveDistance.toFixed(2)} km</h3>
-            <h3>Total Price: ₹{Math.floor(vehiclePrices[formData.vehicle] * liveDistance)}</h3>
+            <p><strong>Distance:</strong> {calculatedDistance.toFixed(2)} km</p>
+            <p><strong>Estimated Price:</strong> ₹{Math.max(Math.floor(vehiclePrices[formData.vehicle] * calculatedDistance), minimumCharges[formData.vehicle])}</p>
+            <p className="price-note">*Minimum charge: ₹{minimumCharges[formData.vehicle]}</p>
           </div>
-       
-        )} */} 
+        )}
+        
+        <div className="payment-section">
+          <label className="section-label">Payment Method</label>
+          <select name="paymentStatus" value={formData.paymentStatus} onChange={handleChange} className="payment-dropdown" required>
+            <option value="cod">Cash on Delivery</option>
+            <option value="online">Online Payment</option>
+            <option value="upi">UPI Payment</option>
+          </select>
+        </div>
+        
+        <button type="submit" className="booking-button">Confirm Booking</button>
+      </form>
+    </div>
+  );
+};
 
-        <div className='pt-3 pb-3 pl-56'>
-          <button type="submit" className="booking-button">Confirm Booking</button>
-            </div>
-               </form>
-     </div>
-   );
- };
-export default BookForm; 
+export default BookForm;

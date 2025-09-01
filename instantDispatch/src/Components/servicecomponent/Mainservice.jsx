@@ -4,8 +4,20 @@ import service from '../../assets/Service.png'
 import card1 from '../../assets/card1.png'
 import card2 from '../../assets/card2.png'
 import card3 from '../../assets/card3.png'
+import { useNavigate } from 'react-router-dom'
 
 const Mainservice = () => {
+  const navigate = useNavigate();
+  
+  const handleBookService = () => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      navigate('/book');
+    } else {
+      navigate('/login');
+    }
+  };
+  
   return (
     <div>
         {/* 1 */}
@@ -42,7 +54,7 @@ const Mainservice = () => {
                      <h1 className='text-2xl head'>Swift Biker</h1>
                      <p className='text-sm  par'>Quick and efficient city deliveries for small parcels and documents.
                          Our bike couriers navigate traffic with ease for timely service.</p>
-                         <button className='service-btn font-bold'>Book </button>
+                         <button onClick={handleBookService} className='service-btn font-bold'>Book </button>
                      </div>
                </div>
                {/* 2 */}
@@ -54,7 +66,7 @@ const Mainservice = () => {
                     <h1 className='text-2xl head'>Motocycle Rider</h1>
                         <p className='text-sm  par'>Eco-friendly and cost-effective for lightweight packages and short distances, 
                             combining speed and sustainability.</p>
-                            <button className='service-btn font-bold'>Book </button>
+                            <button onClick={handleBookService} className='service-btn font-bold'>Book </button>
                         </div>
                </div>
                {/* 3 */}
@@ -66,7 +78,7 @@ const Mainservice = () => {
                     <h1 className='text-2xl head'>Pickup Driver</h1>
                         <p className='text-sm par' >Ideal for larger items and multiple parcels.
                              Our small trucks ensure secure and efficient transport for safe and timely deliveries.</p>
-                             <button className='service-btn font-bold'>Book </button>
+                             <button onClick={handleBookService} className='service-btn font-bold'>Book </button>
                 </div>
                </div>
          </div>

@@ -25,7 +25,7 @@
 .sec2-header{
     margin-left: 8%;
     padding-left: 5%;
-    border-left: 2px solid red;
+    /* border-left: 2px solid red; */
 }
 .sec2-par{
     padding-left: 12%;

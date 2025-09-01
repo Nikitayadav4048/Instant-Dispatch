@@ -7,10 +7,11 @@
 }
 .safe-img{
     padding-top: 20%;
-    height: 400px;
+    padding-left:10%;
+    height: 500px;
 }
 .safety-text{
-    padding: 10%;
+    padding: 7%;
     min-width: 300px;
 }
 .safe-btn{

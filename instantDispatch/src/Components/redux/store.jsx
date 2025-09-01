@@ -11,7 +11,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import ordersReducer from './ordersSlice';
 import notificationsReducer from './notificationSlice';
 
-export const store = configureStore({
+const store = configureStore({
     reducer: {
         orders: ordersReducer,
         notifications: notificationsReducer,
@@ -20,3 +20,5 @@ export const store = configureStore({
         serializableCheck: false,
       }),
 });
+
+export default store;

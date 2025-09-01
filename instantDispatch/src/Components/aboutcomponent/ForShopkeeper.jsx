@@ -1,27 +1,24 @@
-import custimg from '../../assets/shopkeeper.jfif';
+// import custimg from '../../assets/shopkeeper2.png'; // File missing
 import "./forcustomer.css";
 const ForShopkeeper = () => {
   return (
     <>
-    <div className="section3 flex flex-wrap justify-center gap-24 my-40 lg:ms-12">
-     
-    
-
-     <div className="section3-part2 w-96 flex flex-col justify-center  px-4">
-     <h2 className='section3-heading mb-9'>FOR SHOPKEEPER</h2>
-       <p className='section3-p text-lg mb-9'> We empower shopkeepers by providing them with a
+     <div className="shopkeeper flex mt-14 flex-wrap lg:flex-nowrap justify-center">
+                <div className="business-text">
+                     <h1 className='busniess-head p-4 text-4xl mt-32'>FOR SHOPKEEPER</h1>
+                     <p className='busniess-par pl-7 text-lg '>We empower shopkeepers by providing them with a
          robust platform to manage their deliveries efficiently.
           Partnering with Instant Dispatch means you can focus on your business,
            knowing that your dispatch needs are in good hands.
-            You can easily integrate our dispatch services into your business operations.</p>
-            <button className='section3-button'>Book now</button>
-     </div>
-
-     <div className="section3-part1">
-      <img src={custimg} alt="" className='sec3-img shop-img'/>
-      </div>
-   
-    </div>
+            You can easily integrate our dispatch services into your business operations. 
+                        </p>
+    
+                        <button className='bus-btn font-bold'>Book now</button>
+                </div>
+                <div className="business-img">
+                   <div className='bus-img bg-gray-200 flex items-center justify-center text-gray-500'>Image Missing</div>
+                </div>
+             </div>
 </>
   )
 }

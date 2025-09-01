@@ -28,8 +28,17 @@ const RoleRedirect = () => {
 
   useEffect(() => {
     if (role === 'rider') {
-      console.log("Redirecting to Rider Form");
-      navigate('/rider-form');
+      // Check if this is a new signup or existing login
+      const isNewSignup = localStorage.getItem('isNewSignup');
+      
+      if (isNewSignup === 'true') {
+        console.log("New signup - Redirecting to Rider Form");
+        localStorage.removeItem('isNewSignup'); // Clean up flag
+        navigate('/rider-form');
+      } else {
+        console.log("Existing login - Redirecting to Rider Dashboard");
+        navigate('/rider-dashboard');
+      }
     }
   }, [role, navigate]);
 

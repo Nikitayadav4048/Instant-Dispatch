@@ -1,12 +1,15 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './RiderForm.css';
 
 const UserSignup = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: '',
     email: '',
     password: '',
-    role: 'customer'
+    role: 'customer',
+    vehicle: ''
   });
   const [showPopup, setShowPopup] = useState(false);
   const [popupMessage, setPopupMessage] = useState('');
@@ -23,7 +26,7 @@ const UserSignup = () => {
     e.preventDefault();
     
     try {
-      const response = await fetch('http://localhost:4000/api/users/signup', {
+      const response = await fetch('http://localhost:4001/api/users/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -38,7 +41,20 @@ const UserSignup = () => {
         setPopupMessage(`Welcome ${data.user.username}! Your account has been created.`);
         localStorage.setItem('token', data.token);
         localStorage.setItem('user', JSON.stringify(data.user));
-        setFormData({ username: '', email: '', password: '', role: 'customer' });
+        
+        // Set flag for new signup
+        if (data.user.role === 'rider') {
+          localStorage.setItem('isNewSignup', 'true');
+        }
+        
+        setFormData({ username: '', email: '', password: '', role: 'customer', vehicle: '' });
+        
+        // Redirect immediately for riders to rider-form
+        if (data.user.role === 'rider') {
+          navigate('/rider-form');
+        } else {
+          navigate('/customer-dashboard');
+        }
       } else {
         setPopupTitle('Registration Failed');
         setPopupMessage(data.message || 'Something went wrong');
@@ -113,6 +129,24 @@ const UserSignup = () => {
               <option value="rider">Rider</option>
             </select>
           </div>
+
+          {formData.role === 'rider' && (
+            <div className="form-group flex flex-col gap-1">
+              <label>Vehicle Type</label>
+              <select
+                name="vehicle"
+                value={formData.vehicle}
+                onChange={handleChange}
+                className="p-2 rounded-md"
+                required
+              >
+                <option value="">Select Vehicle</option>
+                <option value="motorcycle">Motorcycle</option>
+                <option value="scooter">Scooter</option>
+                <option value="miniTruck">Mini Truck</option>
+              </select>
+            </div>
+          )}
 
           <div className="form-group flex justify-center">
             <button type="submit" className="px-14 py-2 submit-btn rounded-md mt-5">

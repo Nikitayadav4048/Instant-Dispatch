@@ -2,7 +2,7 @@ import Footer from './Components/homecomponent/Footer';
 import CustomerNav from './Components/NavbarComponents/CustomerNav'
 import Navbar from './Components/NavbarComponents/Navbar'
 import RiderNav from './Components/NavbarComponents/RiderNav'
-import Orderlisthead from './Components/Orderlist/orderlisthead'
+// import Orderlisthead from './Components/Orderlist/orderlisthead'
 // import Dashbord from './Components/Orderlist/Dashbord'
 
 import { useAuth0 } from "@auth0/auth0-react";

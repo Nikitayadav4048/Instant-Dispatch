@@ -7,18 +7,19 @@
     padding: 80px;
 }
 .busniess-head{
-    margin-bottom: 10px;
-    border-left: 2px solid red;
+    /* margin-bottom: 5px; */
+    padding-left: 10%;
+    /* border-left: 2px solid red; */
 }
 .busniess-par{
-     
+    padding-left: 10%;
     width: 70%;
     min-width: 300px;
 }
 .bus-img{
     height: 500px;
     width: 590px;
-    padding-right: 88px;
+    padding-right: 10%;
 }
 .bus-btn{
     margin-left: 10px;

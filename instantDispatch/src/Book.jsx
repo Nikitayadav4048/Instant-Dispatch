@@ -55,14 +55,19 @@ import Footer from "./Components/homecomponent/Footer";
 import BookForm from "./Components/bookingcomponent/BookForm";
 import CustomerNav from "./Components/NavbarComponents/CustomerNav";
 import Navbar from "./Components/NavbarComponents/Navbar";
-import { useAuth0 } from "@auth0/auth0-react";
+import { useState, useEffect } from "react";
 
 function Book() {
-  const { isAuthenticated } = useAuth0(); // Only check login status
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    setIsAuthenticated(!!token);
+  }, []);
 
   return (
     <>
-      {isAuthenticated ? <CustomerNav /> : <Navbar />}
+      <Navbar />
       {/* <Booking /> */}
       <BookForm />
       <Footer />

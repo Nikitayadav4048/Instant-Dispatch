@@ -3,7 +3,7 @@ import "./forcustomer.css";
 const ForRider = () => {
   return (
     <>
-    <div className="section3 flex flex-wrap justify-center gap-40 my-40 ">
+    {/* <div className="section3 flex flex-wrap justify-center gap-40 my-40 ">
       <div className="section3-part1">
       <img src={custimg} alt="" className='sec3-img rider-img '/>
       </div>
@@ -15,7 +15,22 @@ const ForRider = () => {
          </p>
             <button className='section3-button'>Start earning</button>
      </div>
-    </div>
+    </div> */}
+
+     <div className="business flex mt-14 flex-wrap lg:flex-nowrap justify-center">
+                    <div className="business-img pl-10">
+                       <img src={custimg} alt="" className='bus-img' />
+                    </div>
+                    <div className="business-text">
+                         <h1 className='busniess-head p-4 text-4xl mt-32'>FOR RIDER</h1>
+                         <p className='busniess-par pl-8 text-lg '>Our riders are the backbone of our service.
+         We provide our riders with the tools and support they need to deliver top-notch 
+         service while ensuring their safety and satisfaction. We prioritize your safety with thorough safety protocols and support systems. 
+                            </p>
+        
+                            <button className='bus-btn font-bold'>Start earning</button>
+                    </div>
+                 </div>
 </>
   )
 }

@@ -8,3 +8,14 @@
         border-radius: 2%;
          transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
 }
+.step-img {
+  transition: transform 0.3s ease;
+}
+
+.step-img:hover {
+  transform: scale(1.05);
+}
+
+.img-box {
+  padding: 1rem;
+}

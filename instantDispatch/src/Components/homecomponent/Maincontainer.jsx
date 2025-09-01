@@ -3,8 +3,20 @@ import image from '../../assets/hero-img.jpeg'
 import { VscWorkspaceTrusted } from "react-icons/vsc";
 import { MdOutlineHealthAndSafety } from "react-icons/md";
 import { TbHours24 } from "react-icons/tb";
+import { useNavigate } from 'react-router-dom';
 
 const Maincontainer = () => {
+  const navigate = useNavigate();
+  
+  const handleBookNow = () => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      navigate('/book');
+    } else {
+      navigate('/login');
+    }
+  };
+  
   return (
     <>
     <div className='main xl:flex-nowrap flex-wrap'>
@@ -13,7 +25,7 @@ const Maincontainer = () => {
     <p className='sec1-h mb-9'>INSTANT DISPATCH</p>
     <p className='sec1-para2'>A courier or parcel dilievery Management system</p>
 
-    <button className='btn font-bold'>Book now</button>
+    <button onClick={handleBookNow} className='btn font-bold'>Book now</button>
     </div>
     <div className="sec2">
       <img src={image} alt="" className='fast-img w-full h-auto object-cover'/>

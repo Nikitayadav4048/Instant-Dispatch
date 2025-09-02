@@ -1,0 +1,21 @@
+.img-box{
+    border-radius: 50%;
+}
+
+.step:hover{
+    transform: scale(1.05); /* Enlarge the image slightly */ 
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add a box shadow */
+        border-radius: 2%;
+         transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+}
+.step-img {
+  transition: transform 0.3s ease;
+}
+
+.step-img:hover {
+  transform: scale(1.05);
+}
+
+.img-box {
+  padding: 1rem;
+}

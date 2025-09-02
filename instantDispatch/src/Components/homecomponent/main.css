@@ -1,0 +1,121 @@
+body{
+    overflow-x: hidden;
+}
+.main{
+    display: flex;
+    justify-content: space-between;
+    
+}
+.fast-img{
+    margin-top: 30px;
+    /* max-width: 950px;
+    max-height: 600px; */
+}
+.sec1-h{
+    font-size: 7vw;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    /* letter-spacing: -0.02em; */
+    line-height: 1.1;
+}
+.sec1-para1{
+    font-size: 31px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+}
+.sec1-para2{
+    font-size: 26px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    margin-left: 30px;
+    line-height: 1.4;
+}
+.btn{
+    margin-top: 40px;
+    margin-left: 20px;
+    padding: 12px 20px;
+    border-radius: 20px;
+    width: 140px;
+    font-size: 17px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 600;
+    background-color: #F8AD42 !important;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 0.01em;
+}
+
+.btn:hover {
+    background-color: #e69a3a !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(248, 173, 66, 0.4);
+}
+
+.trust-img{
+    padding-top: 20px;
+    padding-right: 50px;
+    border-right: 2px solid red;
+    padding-right: 90px;
+}
+.sefty{
+    padding-top: 20px;
+    padding-right: 50px;
+    border-right: 2px solid red;
+    padding-right: 90px;
+}
+.time-line{
+    padding-top: 20px;
+    
+}
+.section2{
+   
+    padding: 52px;
+    margin-bottom: 10% ;
+    /* background-color: rgb(250, 250, 250); */
+}
+.icon-padding{
+    padding: 80px ;
+}
+.icon-background{
+   
+}
+
+.boxes {
+    min-width: 280px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.boxes:hover {
+    transform: translateY(-10px);
+}
+
+
+@media  (max-width: 1000px) {
+  
+    .sec1-para2{
+        
+        margin-left: 0px;
+    }
+
+ }
+ 
+ @media  (max-width: 1074px) {
+  .sefty{
+    border-right: none;
+  }
+
+ }
+
+  
+ @media  (max-width: 798px) {
+    .trust-img{
+      border-right: none;
+    }
+    .time-line{
+        padding-right: 90px;
+    }
+  
+   }

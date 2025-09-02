@@ -1,0 +1,52 @@
+*{
+    margin: 0%;
+    padding: 0%;
+}
+.business{
+    margin: 20px;
+    padding: 80px;
+}
+.busniess-head{
+    /* margin-bottom: 5px; */
+    padding-left: 10%;
+    /* border-left: 2px solid red; */
+}
+.busniess-par{
+    padding-left: 10%;
+    width: 70%;
+    min-width: 300px;
+}
+.bus-img{
+    height: 500px;
+    width: 590px;
+    padding-right: 10%;
+}
+.bus-btn{
+    margin-left: 10px;
+    margin-top: 40px;
+    padding: 10px;
+    border-radius: 20px;
+    width: 130px;
+    font-size: 17px;
+    background-color: #F8AD42;
+    border: none;
+}
+
+@media  (max-width: 790px) {
+    .bus-img{
+    width: 100%;
+     height: 100%;
+     padding-right: 0px;
+    }
+    .business{
+        padding: 10px;
+    }
+    
+ }
+
+ @media  (max-width:1108px) {
+    .bus-img{
+   padding-right: 0;
+    }
+    
+  }

@@ -3,19 +3,19 @@ import axios from 'axios';
 
 // Async Thunk for fetching all bookings
 export const fetchBookings = createAsyncThunk('orders/fetchBookings', async () => {
-    const response = await axios.get('http://localhost:5000/api/bookings');
+    const response = await axios.get('http://localhost:5002/api/bookings');
     return response.data;
 });
 
 // Async Thunk for fetching a booking by ID
 export const fetchBookingById = createAsyncThunk('orders/fetchBookingById', async (id) => {
-    const response = await axios.get(`http://localhost:5000/api/bookings/${id}`);
+    const response = await axios.get(`http://localhost:5002/api/bookings/${id}`);
     return response.data;
 });
 
 // Async Thunk for updating order status
 export const updateOrderStatus = createAsyncThunk('orders/updateOrderStatus', async ({ id, status }) => {
-    const response = await axios.put(`http://localhost:5000/api/bookings/${id}`, { status });
+    const response = await axios.put(`http://localhost:5002/api/bookings/${id}`, { status });
     return { id, status };
 });
 

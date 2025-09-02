@@ -4,11 +4,9 @@ const User = require('../../auth-backend/models/User');
 const inMemoryDB = require('../utils/inMemoryDB');
 const mongoose = require('mongoose');
 const socketManager = require('../socketServer');
-const { safeLog } = require('../utils/logger');
-
 // Create a booking
 exports.createBooking = async (req, res) => {
-    safeLog('log', 'Incoming booking data', { hasData: !!req.body });
+    console.log('Incoming booking data:', !!req.body);
 
     const {
         name,
@@ -43,7 +41,7 @@ exports.createBooking = async (req, res) => {
         if (mongoose.connection.readyState === 1) {
             const newBooking = new Booking(bookingData);
             const savedBooking = await newBooking.save();
-            safeLog('log', 'Booking saved to MongoDB');
+            console.log('Booking saved to MongoDB');
             
             // Emit socket event to notify riders and customer
             if (socketManager.io) {
@@ -65,7 +63,7 @@ exports.createBooking = async (req, res) => {
         } else {
             // Use in-memory database
             const savedBooking = inMemoryDB.createBooking(bookingData);
-            safeLog('log', 'Booking saved to in-memory DB');
+            console.log('Booking saved to in-memory DB');
             
             // Emit socket event to notify riders and customer
             if (socketManager.io) {
@@ -86,11 +84,11 @@ exports.createBooking = async (req, res) => {
             res.status(200).json(savedBooking);
         }
     } catch (err) {
-        safeLog('error', 'Booking creation failed', { error: err.message });
+        console.error('Booking creation failed:', err.message);
         // Fallback to in-memory database
         try {
             const savedBooking = inMemoryDB.createBooking(bookingData);
-            safeLog('log', 'Fallback: Booking saved to in-memory DB');
+            console.log('Fallback: Booking saved to in-memory DB');
             res.status(200).json(savedBooking);
         } catch (fallbackErr) {
             res.status(400).json({ message: fallbackErr.message });
@@ -100,24 +98,24 @@ exports.createBooking = async (req, res) => {
 
 // Get all bookings
 exports.getAllBookings = async (req, res) => {
-    safeLog('log', 'Fetching all bookings...');
+    console.log('Fetching all bookings...');
     try {
         // Check if MongoDB is connected
         if (mongoose.connection.readyState === 1) {
             const bookings = await Booking.find();
-            safeLog('log', 'Found bookings from MongoDB', { count: bookings.length });
+            console.log('Found bookings from MongoDB:', bookings.length);
             res.status(200).json(bookings);
         } else {
             // Use in-memory database
             const bookings = inMemoryDB.getAllBookings();
-            safeLog('log', 'Found bookings from in-memory DB', { count: bookings.length });
+            console.log('Found bookings from in-memory DB:', bookings.length);
             res.status(200).json(bookings);
         }
     } catch (err) {
-        safeLog('error', 'Failed to fetch bookings', { error: err.message });
+        console.error('Failed to fetch bookings:', err.message);
         // Fallback to in-memory database
         const bookings = inMemoryDB.getAllBookings();
-        safeLog('log', 'Fallback: Found bookings from in-memory DB', { count: bookings.length });
+        console.log('Fallback: Found bookings from in-memory DB:', bookings.length);
         res.status(200).json(bookings);
     }
 };
@@ -129,7 +127,7 @@ exports.getRiderBookings = async (req, res) => {
         const bookings = await Booking.find({ riderEmail: email });
         res.status(200).json(bookings);
     } catch (err) {
-        safeLog('error', 'Failed to fetch rider bookings', { error: err.message });
+        console.error('Failed to fetch rider bookings:', err.message);
         res.status(400).json({ message: err.message });
     }
 };
@@ -144,7 +142,7 @@ exports.getBookingById = async (req, res) => {
         }
         res.status(200).json(booking);
     } catch (err) {
-        safeLog('error', 'Failed to fetch booking', { error: err.message });
+        console.error('Failed to fetch booking:', err.message);
         res.status(400).json({ message: err.message });
     }
 };
@@ -160,7 +158,7 @@ exports.getBookingsByVehicle = async (req, res) => {
         const bookings = await Booking.find({ vehicle: user.vehicle });
         res.status(200).json(bookings);
     } catch (err) {
-        safeLog('error', 'Failed to fetch vehicle bookings', { error: err.message });
+        console.error('Failed to fetch vehicle bookings:', err.message);
         res.status(400).json({ message: err.message });
     }
 };
@@ -210,12 +208,12 @@ exports.updateBooking = async (req, res) => {
                     timestamp: new Date().toISOString()
                 });
             }
-            safeLog('log', 'Notification sent for booking update', { bookingId: id, status });
+            console.log('Notification sent for booking update:', id, status);
         }
         
         res.status(200).json(updatedBooking);
     } catch (err) {
-        safeLog('error', 'Failed to update booking', { error: err.message });
+        console.error('Failed to update booking:', err.message);
         res.status(400).json({ message: err.message });
     }
 };

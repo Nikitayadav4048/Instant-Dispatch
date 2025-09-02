@@ -38,15 +38,9 @@ const BookForm = () => {
   const [finalPrice, setFinalPrice] = useState(null);
 
   const vehiclePrices = {
-    bike: 15,      // ₹15 per km
-    scooter: 25,   // ₹25 per km  
-    miniTruck: 40, // ₹40 per km
-  };
-
-  const minimumCharges = {
-    bike: 50,      // Minimum ₹50
-    scooter: 80,   // Minimum ₹80
-    miniTruck: 120, // Minimum ₹120
+    bike: 10,
+    scooter: 30,
+    miniTruck: 50,
   };
 
   const handleChange = (e) => {
@@ -187,7 +181,7 @@ const BookForm = () => {
   const completeBooking = async (bookingData, totalPrice) => {
     try {
       console.log('📤 Sending booking data:', bookingData);
-      const res = await axios.post('http://localhost:5000/api/bookings', bookingData);
+      const res = await axios.post('http://localhost:5002/api/bookings', bookingData);
       console.log('✅ Booking successful:', res.data);
 
       // Generate parcel ID
@@ -254,10 +248,7 @@ const BookForm = () => {
     setLiveDistance(distance);
     setFinalDistance(distance);
 
-    // Calculate price with minimum charge
-    const calculatedPrice = Math.floor(vehiclePrices[formData.vehicle] * distance);
-    const minimumCharge = minimumCharges[formData.vehicle];
-    const totalPrice = Math.max(calculatedPrice, minimumCharge);
+    const totalPrice = Math.floor(vehiclePrices[formData.vehicle] * distance);
     setFinalPrice(totalPrice);
 
     const user = JSON.parse(localStorage.getItem('user') || '{}');
@@ -370,9 +361,7 @@ const BookForm = () => {
         
         {calculatedDistance && formData.vehicle && (
           <div className="distance-display">
-            <p><strong>Distance:</strong> {calculatedDistance.toFixed(2)} km</p>
-            <p><strong>Estimated Price:</strong> ₹{Math.max(Math.floor(vehiclePrices[formData.vehicle] * calculatedDistance), minimumCharges[formData.vehicle])}</p>
-            <p className="price-note">*Minimum charge: ₹{minimumCharges[formData.vehicle]}</p>
+            <p><strong>Estimated Price:</strong> ₹{Math.floor(vehiclePrices[formData.vehicle] * calculatedDistance)}</p>
           </div>
         )}
         

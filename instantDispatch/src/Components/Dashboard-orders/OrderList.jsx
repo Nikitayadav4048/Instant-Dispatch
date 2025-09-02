@@ -19,7 +19,7 @@ const OrdersPage = () => {
     const fetchRiderOrders = async () => {
       try {
         console.log('🔄 Fetching rider orders from API...');
-        const response = await fetch(`http://localhost:5000/api/bookings/`);
+        const response = await fetch(`http://localhost:5002/api/bookings/`);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -28,59 +28,13 @@ const OrdersPage = () => {
         dispatch(setRiderOrders(data));
       } catch (error) {
         console.error('❌ Error fetching rider orders:', error);
-        // Fallback to sample data for development
-        const sampleOrders = [
-          {
-            _id: '674a1b2c3d4e5f6789012345',
-            id: 'ORD001',
-            customerName: 'Rajesh Kumar',
-            customerEmail: 'rajesh.kumar@gmail.com',
-            pickupAddress: 'Main Market, Khategaon, MP',
-            deliveryAddress: 'Railway Station Road, Khategaon, MP',
-            parcelDescription: 'Electronics - Mobile Phone',
-            weight: '0.5',
-            vehicle: 'scooter',
-            price: 45,
-            status: 'Pending',
-            createdAt: new Date().toISOString()
-          },
-          {
-            _id: '674a1b2c3d4e5f6789012346',
-            id: 'ORD002',
-            customerName: 'Priya Sharma',
-            customerEmail: 'priya.sharma@gmail.com',
-            pickupAddress: 'Bus Stand, Khategaon, MP',
-            deliveryAddress: 'Civil Hospital, Khategaon, MP',
-            parcelDescription: 'Documents - Important Papers',
-            weight: '0.2',
-            vehicle: 'motorcycle',
-            price: 35,
-            status: 'Out for Delivery',
-            createdAt: new Date().toISOString()
-          },
-          {
-            _id: '674a1b2c3d4e5f6789012347',
-            id: 'ORD003',
-            customerName: 'Amit Patel',
-            customerEmail: 'amit.patel@gmail.com',
-            pickupAddress: 'Post Office, Khategaon, MP',
-            deliveryAddress: 'Bank Square, Khategaon, MP',
-            parcelDescription: 'Food Items - Sweets Box',
-            weight: '2.0',
-            vehicle: 'miniTruck',
-            price: 80,
-            status: 'Pending',
-            createdAt: new Date().toISOString()
-          }
-        ];
-        console.log('🔄 Using sample data:', sampleOrders.length, 'orders');
-        dispatch(setRiderOrders(sampleOrders));
       }
     };
     fetchRiderOrders();
 
-    // Socket service removed - file missing
     return () => {};
+
+
   }, [dispatch]);
 
   const handleSearch = (e) => {

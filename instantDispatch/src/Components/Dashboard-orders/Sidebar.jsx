@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import './Sidebar.css';
 import logo from '../../assets/logo-final.png';
@@ -7,6 +7,7 @@ import { MdDashboard, MdDeliveryDining, MdPerson, MdSettings, MdHelp, MdStar, Md
 
 const Sidebar = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const { data: orders } = useSelector(state => state.orders);
   const [user] = useState(() => JSON.parse(localStorage.getItem('user') || '{}'));
   // Show all orders without vehicle filtering
@@ -22,11 +23,11 @@ const Sidebar = () => {
   };
 
   const menuItems = [
-    { to: '/rider-dashboard', icon: MdDashboard, label: 'Dashboard', badge: null },
-    { to: '/rider-dashboard/orders', icon: MdDeliveryDining, label: 'Orders', badge: riderOrders.filter(o => o.status === 'Pending').length || null },
-    { to: '/rider-dashboard/profile', icon: MdPerson, label: 'Profile', badge: null },
-    { to: '/rider-dashboard/settings', icon: MdSettings, label: 'Settings', badge: null },
-    { to: '/rider-dashboard/help', icon: MdHelp, label: 'Help & Support', badge: null }
+    { to: '/rider-dashboard', icon: MdDashboard, label: 'Dashboard', badge: null, exact: true },
+    { to: '/rider-dashboard/orders', icon: MdDeliveryDining, label: 'Orders', badge: riderOrders.filter(o => o.status === 'Pending').length || null, exact: true },
+    { to: '/rider-dashboard/profile', icon: MdPerson, label: 'Profile', badge: null, exact: false },
+    { to: '/rider-dashboard/settings', icon: MdSettings, label: 'Settings', badge: null, exact: false },
+    { to: '/rider-dashboard/help', icon: MdHelp, label: 'Help & Support', badge: null, exact: false }
   ];
 
   useEffect(() => {
@@ -87,15 +88,34 @@ const Sidebar = () => {
             <NavLink
               key={item.label}
               to={item.to}
-              end={item.to === '/rider-dashboard'}
-              className={({ isActive }) =>
-                `flex items-center justify-between p-3 rounded-lg transition-all duration-200 group outline-none no-underline ${
+              className={() => {
+                let isActive = false;
+                if (item.label === 'Orders') {
+                  // Orders tab active on orders page AND customer details page
+                  isActive = location.pathname === '/rider-dashboard/orders' || location.pathname.startsWith('/rider-dashboard/customer/');
+                } else if (item.label === 'Dashboard') {
+                  isActive = location.pathname === '/rider-dashboard';
+                } else {
+                  isActive = location.pathname.startsWith(item.to);
+                }
+                return `flex items-center justify-between p-3 rounded-lg transition-all duration-200 group outline-none no-underline ${
                   isActive
                     ? 'text-white shadow-md'
                     : 'hover:bg-gray-50 text-gray-700 hover:text-gray-900'
-                }`
-              }
-              style={({ isActive }) => isActive ? {backgroundColor: '#F8AD42', outline: 'none', textDecoration: 'none'} : {outline: 'none', textDecoration: 'none'}}
+                }`;
+              }}
+              style={() => {
+                let isActive = false;
+                if (item.label === 'Orders') {
+                  // Orders tab active on orders page AND customer details page
+                  isActive = location.pathname === '/rider-dashboard/orders' || location.pathname.startsWith('/rider-dashboard/customer/');
+                } else if (item.label === 'Dashboard') {
+                  isActive = location.pathname === '/rider-dashboard';
+                } else {
+                  isActive = location.pathname.startsWith(item.to);
+                }
+                return isActive ? {backgroundColor: '#F8AD42', outline: 'none', textDecoration: 'none'} : {outline: 'none', textDecoration: 'none'};
+              }}
             >
               <div className="flex items-center space-x-3">
                 <item.icon size={20} className="group-hover:scale-110 transition-transform" />

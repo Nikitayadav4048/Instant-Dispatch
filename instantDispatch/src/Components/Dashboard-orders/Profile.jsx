@@ -9,33 +9,59 @@ const Profile = () => {
   const dispatch = useDispatch();
   const [lastUpdate, setLastUpdate] = useState(new Date());
   const [riderDetails, setRiderDetails] = useState({
-    name: user.username || "Rider",
-    phone: user.phone || "+1 234 567 890",
-    email: user.email || "rider@example.com",
-    vehicle: user.vehicle || "Motorcycle",
-    licensePlate: user.licensePlate || "AB 1234 CD",
-    vehicleModel: user.vehicleModel || "",
-    licenseNumber: user.licenseNumber || "",
-    riderId: user.riderId || "",
+    name: "Rider",
+    phone: "+1 234 567 890",
+    email: "rider@example.com",
+    vehicle: "Motorcycle",
+    licensePlate: "AB 1234 CD",
+    vehicleModel: "",
+    licenseNumber: "",
+    riderId: "",
     totalDeliveries: 0,
     completedDeliveries: 0,
     pendingDeliveries: 0,
     rating: 4.7,
   });
+  const [profileLoading, setProfileLoading] = useState(true);
 
-  // Real-time data refresh
+  // Load rider profile data from localStorage
   useEffect(() => {
-    // Initial fetch
+    const riderFormData = JSON.parse(localStorage.getItem('riderFormData') || '{}');
+    const userData = JSON.parse(localStorage.getItem('user') || '{}');
+    
+    console.log('🔍 Rider Form Data:', riderFormData);
+    console.log('👤 User Data:', userData);
+    console.log('📋 Final Rider Details:', {
+      riderId: riderFormData.riderId || userData.riderId,
+      vehicleModel: riderFormData.vehicleModel || userData.vehicleModel,
+      licenseNumber: riderFormData.licenseNumber || userData.licenseNumber
+    });
+    
+    setRiderDetails(prev => ({
+      ...prev,
+      name: riderFormData.fullName || userData.username || user.username || "Rider",
+      phone: riderFormData.phoneNumber || userData.phoneNumber || userData.phone || "+1 234 567 890",
+      email: riderFormData.email || userData.email || user.email || "rider@example.com",
+      vehicle: riderFormData.vehicleType || userData.vehicleType || userData.vehicle || "Motorcycle",
+      licensePlate: riderFormData.vehicleNumber || userData.vehicleNumber || "AB 1234 CD",
+      vehicleModel: riderFormData.vehicleModel || userData.vehicleModel || "",
+      licenseNumber: riderFormData.licenseNumber || userData.licenseNumber || "",
+      riderId: riderFormData.riderId || userData.riderId || ""
+    }));
+    
+    setProfileLoading(false);
+
+    // Initial fetch orders
     dispatch(fetchBookings());
     
     // Set up polling for real-time updates
     const interval = setInterval(() => {
       dispatch(fetchBookings());
       setLastUpdate(new Date());
-    }, 5000); // Update every 5 seconds
+    }, 5000);
     
     return () => clearInterval(interval);
-  }, [dispatch]);
+  }, [dispatch, user.id, user.username, user.email]);
 
   useEffect(() => {
     if (orders.length > 0) {
@@ -72,15 +98,25 @@ const Profile = () => {
   const getVehicleIcon = (vehicleType) => {
     switch(vehicleType?.toLowerCase()) {
       case 'cycle':
+      case 'bicycle':
         return <span className="text-orange-600 text-3xl">🚲</span>;
       case 'bike':
       case 'motorcycle':
-        return <MdDirectionsBike className="text-orange-600" size={32} />;
+      case 'motorbike':
+        return <span className="text-orange-600 text-3xl">🏍️</span>;
+      case 'scooter':
+        return <span className="text-orange-600 text-3xl">🛵</span>;
+      case 'car':
+      case 'auto':
+        return <span className="text-orange-600 text-3xl">🚗</span>;
       case 'minitruck':
       case 'mini truck':
-        return <MdLocalShipping className="text-orange-600" size={32} />;
+      case 'truck':
+        return <span className="text-orange-600 text-3xl">🚚</span>;
+      case 'van':
+        return <span className="text-orange-600 text-3xl">🚐</span>;
       default:
-        return <MdDirectionsBike className="text-orange-600" size={32} />;
+        return <span className="text-orange-600 text-3xl">🏍️</span>;
     }
   };
 
@@ -208,25 +244,23 @@ const Profile = () => {
                 {getVehicleIcon(riderDetails.vehicle)}
                 <div>
                   <p className="text-orange-600 font-medium">Vehicle Type</p>
-                  <p className="text-lg font-bold text-orange-800 capitalize">{riderDetails.vehicle}</p>
+                  <p className="text-lg font-bold text-orange-800 capitalize">
+                    {riderDetails.vehicle === 'miniTruck' ? 'Mini Truck' : riderDetails.vehicle}
+                  </p>
                 </div>
               </div>
-              {riderDetails.vehicleModel && (
-                <div className="bg-gray-50 p-4 rounded-xl">
-                  <p className="text-gray-600 font-medium mb-1">Vehicle Model</p>
-                  <p className="text-lg font-bold text-gray-800">{riderDetails.vehicleModel}</p>
-                </div>
-              )}
+              <div className="bg-gray-50 p-4 rounded-xl">
+                <p className="text-gray-600 font-medium mb-1">Vehicle Model</p>
+                <p className="text-lg font-bold text-gray-800">{riderDetails.vehicleModel || 'Not specified'}</p>
+              </div>
               <div className="bg-gray-50 p-4 rounded-xl">
                 <p className="text-gray-600 font-medium mb-1">License Plate</p>
                 <p className="text-lg font-bold text-gray-800">{riderDetails.licensePlate}</p>
               </div>
-              {riderDetails.licenseNumber && (
-                <div className="bg-gray-50 p-4 rounded-xl">
-                  <p className="text-gray-600 font-medium mb-1">License Number</p>
-                  <p className="text-lg font-bold text-gray-800">{riderDetails.licenseNumber}</p>
-                </div>
-              )}
+              <div className="bg-gray-50 p-4 rounded-xl">
+                <p className="text-gray-600 font-medium mb-1">License Number</p>
+                <p className="text-lg font-bold text-gray-800">{riderDetails.licenseNumber || 'Not provided'}</p>
+              </div>
               <div className="bg-gray-50 p-4 rounded-xl">
                 <p className="text-gray-600 font-medium mb-1">Status</p>
                 <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">

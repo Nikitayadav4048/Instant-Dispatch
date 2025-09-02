@@ -24,7 +24,7 @@ const CustomerNav = () => {
     const fetchOrders = async () => {
       if (!encodedEmail) return;
       try {
-        const response = await axios.get(`http://localhost:5000/api/orders/${encodedEmail}`);
+        const response = await axios.get(`http://localhost:5002/api/orders/${encodedEmail}`);
         setOrders(response.data);
       } catch (error) {
         console.error('Error fetching orders:', error);

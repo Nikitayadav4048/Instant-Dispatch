@@ -184,19 +184,22 @@ const RiderForm = () => {
       
       // Save rider form data to localStorage
       const riderData = {
-        riderId: generatedRiderID,
-        phone: formData.get('contact'),
-        vehicle: vehicleType,
+        fullName: user.username || 'Rider',
+        email: user.email,
+        phoneNumber: formData.get('contact'),
+        vehicleType: vehicleType,
         vehicleModel: formData.get('vehicleModel') || '',
-        licensePlate: formData.get('numberPlate') || '',
+        vehicleNumber: formData.get('numberPlate') || '',
         licenseNumber: formData.get('licenseNumber') || '',
+        riderId: generatedRiderID,
         hasLicense: hasLicense
       };
       
-      // Update user data in localStorage
+      // Save to both user and riderFormData in localStorage
       const currentUser = JSON.parse(localStorage.getItem('user') || '{}');
       const updatedUser = { ...currentUser, ...riderData };
       localStorage.setItem('user', JSON.stringify(updatedUser));
+      localStorage.setItem('riderFormData', JSON.stringify(riderData));
       
       setPopupTitle('Registration Successful!');
       setPopupMessage(`Your Rider ID is: ${generatedRiderID}`);

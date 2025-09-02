@@ -37,7 +37,7 @@ const Profile = () => {
   const fetchOrders = async (email) => {
     setLoadingOrders(true);
     try {
-      const response = await axios.get(`http://localhost:5000/api/bookings`);
+      const response = await axios.get(`http://localhost:5002/api/bookings`);
       const allBookings = response.data || [];
       const userOrders = allBookings.filter(booking => 
         booking.customerUsername === email || 

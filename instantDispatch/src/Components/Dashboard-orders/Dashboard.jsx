@@ -33,7 +33,7 @@ const Dashboard = () => {
     // Real-time order monitoring
     const orderMonitor = setInterval(async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/bookings');
+        const response = await fetch('http://localhost:5002/api/bookings');
         const newOrders = await response.json();
         
         // Check for new orders

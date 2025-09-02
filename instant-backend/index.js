@@ -47,7 +47,7 @@ dotenv.config();
 // Initialize Express app
 const app = express();
 const server = http.createServer(app);
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 5001;
 
 // Middleware
 app.use(cors({

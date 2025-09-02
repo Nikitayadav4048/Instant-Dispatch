@@ -28,7 +28,7 @@ app.options('*', (req, res) => {
   res.sendStatus(200);
 });
 
-const PORT = process.env.PORT || 4001;
+const PORT = process.env.PORT || 4002;
 const DB_URI = process.env.MONGODB_URI || "mongodb://localhost:27017/instant-dispatch";
 
 const { safeLog } = require('./utils/logger');

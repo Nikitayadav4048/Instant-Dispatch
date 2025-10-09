@@ -1,0 +1,434 @@
+.booking-form-container {
+  max-width: 800px;
+  margin: 80px auto;
+  padding: 30px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.booking-heading {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 30px;
+  color: #333;
+  font-weight: 600;
+}
+
+.form-row {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.form-row .input-group {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+.input-group {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.input-group i {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #999;
+  font-size: 16px;
+}
+
+.booking-form input {
+  width: 100%;
+  padding: 12px 15px 12px 45px;
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  font-size: 16px;
+  box-sizing: border-box;
+  background: #f8f9fa;
+  transition: all 0.3s ease;
+}
+
+.booking-form input:focus {
+  outline: none;
+  border-color: #F8AD42;
+  background: white;
+  box-shadow: 0 0 0 3px rgba(248, 173, 66, 0.1);
+}
+
+.weight-recommendation {
+  margin-bottom: 15px;
+  padding: 10px;
+  background: #e8f5e8;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #155724;
+}
+
+.vehicle-options {
+  margin-bottom: 25px;
+}
+
+.vehicle-options h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.vehicle-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.vehicle-label {
+  display: block;
+  padding: 15px;
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.vehicle-label:hover {
+  border-color: #F8AD42;
+}
+
+.vehicle-label.active {
+  border-color: #F8AD42;
+  background: #fff8f0;
+}
+
+.vehicle-label.recommended {
+  border-color: #28a745;
+  background: #f8fff8;
+}
+
+.vehicle-label.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: #f5f5f5;
+}
+
+.vehicle-label input[type='radio'] {
+  display: none;
+}
+
+.vehicle-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.vehicle-info i {
+  font-size: 24px;
+  color: #666;
+}
+
+.vehicle-label.active .vehicle-info i {
+  color: #F8AD42;
+}
+
+.vehicle-label.recommended .vehicle-info i {
+  color: #28a745;
+}
+
+.vehicle-details {
+  text-align: center;
+}
+
+.vehicle-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.vehicle-capacity {
+  font-size: 13px;
+  color: #666;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.vehicle-price {
+  font-size: 14px;
+  font-weight: 500;
+  color: #F8AD42;
+  display: block;
+}
+
+.recommended-badge {
+  background: #28a745;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 10px;
+  font-size: 10px;
+  margin-top: 5px;
+}
+
+.overweight-badge {
+  background: #dc3545;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 10px;
+  font-size: 10px;
+  margin-top: 5px;
+}
+
+.price-breakdown {
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 15px;
+  margin: 20px 0;
+}
+
+.price-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.price-total {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #e9ecef;
+  font-size: 16px;
+  color: #F8AD42;
+}
+
+.payment-section {
+  margin-bottom: 25px;
+}
+
+.payment-section h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.payment-options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.payment-option {
+  display: block;
+  padding: 15px;
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.payment-option:hover {
+  border-color: #F8AD42;
+}
+
+.payment-option.active {
+  border-color: #F8AD42;
+  background: #fff8f0;
+}
+
+.payment-option input[type='radio'] {
+  display: none;
+}
+
+.payment-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.payment-info i {
+  font-size: 20px;
+  color: #666;
+}
+
+.payment-option.active .payment-info i {
+  color: #F8AD42;
+}
+
+.payment-info span {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+}
+
+.booking-button {
+  background: #F8AD42;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  transition: background 0.2s ease;
+}
+
+.booking-button:hover {
+  background: #e9a038;
+}
+
+.booking-button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.payment-processing {
+  margin-top: 15px;
+  padding: 15px;
+  background: #e8f4fd;
+  border: 1px solid #bee5eb;
+  border-radius: 8px;
+  text-align: center;
+  color: #0c5460;
+}
+
+.payment-processing p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.payment-processing p:first-child {
+  font-weight: 600;
+}
+
+.suggestions-list {
+  list-style: none;
+  padding: 0;
+  margin: 5px 0 15px 0;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  max-height: 150px;
+  overflow-y: auto;
+  background: white;
+  position: absolute;
+  width: 100%;
+  z-index: 1000;
+}
+
+.suggestion-item {
+  padding: 10px 15px;
+  cursor: pointer;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.suggestion-item:last-child {
+  border-bottom: none;
+}
+
+.suggestion-item:hover {
+  background: #f8f9fa;
+}
+
+.error-border {
+  border-color: #dc3545 !important;
+  background: #fff5f5 !important;
+}
+
+.error-text {
+  color: #dc3545;
+  font-size: 14px;
+  margin-top: -15px;
+  margin-bottom: 15px;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.modal-content {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  max-width: 400px;
+  width: 90%;
+}
+
+.modal-content h2 {
+  font-size: 24px;
+  color: #28a745;
+  margin-bottom: 15px;
+}
+
+.modal-content button {
+  background: #F8AD42;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+.weight-recommendation {
+  margin-bottom: 15px;
+  padding: 10px;
+  background: #e8f5e8;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #155724;
+}
+
+@media (max-width: 768px) {
+  .booking-form-container {
+    margin: 20px;
+    padding: 20px;
+  }
+  
+  .booking-heading {
+    font-size: 24px;
+  }
+  
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+  
+  .form-row .input-group {
+    margin-bottom: 20px;
+  }
+  
+  .vehicle-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  .payment-options {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  
+  .payment-info {
+    flex-direction: row;
+    justify-content: center;
+    gap: 12px;
+  }
+}
